@@ -1,0 +1,13 @@
+rails generate model issue title:string number:integer season:string is_published:boolean description:string
+rails generate model piece title:string number:integer author_id:integer issue_id:integer type:string
+rails generate model author first_name:string last_name:string
+
+#add some belongs_to has_many associations
+rake db:create
+
+
+
+rails generate controller home index about next
+rails generate controller issues index new edit
+rails generate controller piece
+rails generate controller author

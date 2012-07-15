@@ -1,0 +1,12 @@
+.issueannounce
+  %h2 Current Issue
+  %h3=@current_issue.title
+  %h4=@current_issue.season
+
+.issueannounce
+  %h3 Past Issues
+
+.olderissues
+  -@past_issues.each do |issue|
+    %h3=issue.title
+    %h4=issue.number
