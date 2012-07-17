@@ -1,15 +1,20 @@
 Orq::Application.routes.draw do
   root :to => 'home#index'
 
-  get "home/about"
+  get "issue/index"
+  get "piece/index"
+  get "author/index"
 
-  get "home/next"
+  get "about" => 'home#about'
+  match "next" => 'home#next'
+  match "people" => 'home#people'
 
-  get "issues/index"
-
-  get "issues/new"
-
-  get "issues/edit"
+  get "issue/new"
+  get "issue/edit"
+  get "author/new"
+  get "author/edit"
+  get "piece/new"
+  get "piece/edit"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

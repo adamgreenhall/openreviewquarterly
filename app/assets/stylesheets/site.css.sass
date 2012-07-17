@@ -1,0 +1,375 @@
+@import 'mixins'
+
+@import url("http://fonts.googleapis.com/css?family=Lora|Alice|IM+Fell+French+Canon+SC|Gentium+Basic:400,400italic")
+    
+body
+    font:
+        family: Palatino, serif
+        size: 14pt
+    letter-spacing: -0.01em
+    line-height: 150%
+    background-color: white
+    color: black
+
+.header
+    position: absolute
+    left: 0px
+    top: 0px
+    width: 100%
+    //min-width: $content-min-width
+    border:
+        top: solid 5px $orqblue
+        bottom: solid 2px lightgray
+
+    +no-link-underline
+    
+    .container
+        display: table-row
+        .title
+            display: table-cell
+            padding-left: 30px
+            +link-color(black)
+        .navigationbar
+            display: table-row
+            .navlink
+                padding:
+                    top: 10px
+                    bottom: 10px
+                    left: 25px
+                display: table-cell
+                +alicefont 
+                +link-color(lightgray,black)
+
+            padding-bottom: 10px
+    
+
+
+a
+    text-decoration: none
+    border-bottom: 1px dashed
+    color: $charcoal
+
+ul
+    list-style-type: none    
+
+h2
+    margin-top: 5ex
+    +alicefont
+
+
+.issue
+    @include link-color($charcoal)
+    @include no-link-underline
+
+#content
+    text-align: justify
+    +max-min-width
+    margin:
+        top: 100px
+        bottom: 4ex
+        left: 8em
+
+.sectionspacer
+    height: 40px
+    
+
+#contributors
+    width: #{4*$contribimgwidth}
+    .container
+        padding-top: 5px
+        margin-left: 0px
+        .everytwo
+            display: none
+        .everythree
+            display: block
+        .contributor
+            height: $contribimgwidth+$contribimgmargin
+            width: $contribimgwidth+$contribimgmargin
+            // padding-bottom: 20px
+            display: table-cell
+            +no-link-underline
+            +link-color($charcoal,black)
+            #pic img
+                width: $contribimgwidth
+                +single-box-shadow(lighten($ghost-gray,15%),2px,4px)
+            #pic img:hover
+                +single-box-shadow($orqblue)
+                // +single-transition("all",1,"ease-in-out")
+            #name
+                width: $contribimgwidth
+                text:
+                    transform: uppercase
+                    align: center
+                font-size: 60% 
+                padding-right: 1ex
+
+#biopage
+    #name
+        font-size: 140%
+        font-weight: bold
+        @include alicefont
+    #pic 
+        text-align: center
+        margin-top: 3ex 
+        a
+            border-bottom: $noborder
+        img
+            width: $contribimgwidth*1.5
+            margin-bottom: 8ex
+
+
+#publisherbios
+    height: 200px
+    margin-bottom: 3ex
+    .publisherbio
+        float: left
+        width: 150px
+        text-align: center
+        +no-link-underline
+        .twitter
+            a
+                +link-colors($light-blue)
+        img
+            width: 150px
+
+.issueheader
+    padding-top: 10px
+    .issueannounce
+        display: none
+    .issuetitle
+        +alicefont
+        font-size: 240%
+        text-align: center
+        +link-color(black,$orqbluedark)
+        +no-link-underline
+        margin-bottom: 0.3em
+        a:hover
+            +single-box-shadow(lighten($orqblue,12%))
+    .issueseason
+        @include alicefont
+        font-size: 90%
+        font-style: italic
+        text-align: center
+        color: $ghost-gray
+        margin-bottom: 1.5em
+    .issuedescription
+        @include horizontal-center( $content-min-width - 5em )
+        padding: 10px
+        line-height: 120%
+        border-top: 1px solid $ghost-gray
+        border-bottom: 1px solid $ghost-gray
+        margin-bottom: 60px
+        font-size: 80%
+        font-family: "Gentium Basic", serif
+        font-style: italic
+
+#tableofcontents
+    .toc_head //Contents
+        //color: lightgray
+        font-size: 160%
+        @include alicefont
+        margin-bottom: 1.4ex 
+
+    .tocpieces
+        text-align: left
+        padding-left: 1.5em
+        margin-left: 1.0em
+        border-left: 10px solid $tocbarcolor
+        .tocpiece
+            line-height: 110%
+            @include no-link-underline
+            .title
+                font-size: 110%
+                margin-bottom: 0.4ex  
+                +alicefont
+                +link-color(black,$orqbluedark)
+            .author
+                font-size: 85%
+                +link-color(gray,black)
+                padding-left: 1.5em
+            .issue
+                font-size: 85%
+                +link-color(gray,black)
+                padding-left: 1.5em
+            .illustrationlabel
+                font-style: italic
+                font-size: 80%
+            margin-bottom: 0.6em
+
+    margin-bottom: 10ex
+
+.piece
+    margin-bottom: 10em
+    .pieceheader
+        padding-top: 30px
+        width: $content-min-width - 3em
+        margin-left: auto
+        margin-right: auto
+        text-align: center
+        .title
+            font-size: 160%
+            +uppercase
+            +alicefont
+            letter-spacing: 3px
+            
+            +no-link-underline
+            +link-color(black,$orqbluedark)
+            margin-bottom: 10px
+            .untitled
+                +link-colors($ghost-gray,darkgray)
+                
+        .author
+            +link-color($charcoal,darkgray)
+            +no-link-underline
+            font-size: 120%
+            padding-bottom: 20px
+        .divider
+            display: none
+            color: lightgray
+        margin-bottom: 1ex
+    .pieceheaderbar
+        border-bottom: 
+            style: solid
+            color: $ghost-gray
+            width: 1.5px
+        margin-bottom: 4ex
+        opacity: 0.20
+        
+        
+    .subsection
+        font-size:  120%
+        margin:
+            top: 5ex
+            bottom: 2ex
+    .illustration
+        @include horizontal-center($content-min-width)
+        margin-top: 2ex
+        .titleauthor
+            text-align: right
+            font-size: 60%
+            color: $charcoal
+            @include no-link-underline
+        margin-bottom: 2ex
+            
+
+.prose
+    @extend .piece
+    .madlib
+        color: lightgray
+        padding:
+            left: 0.5em
+            right: 0.5em
+    .dating_story
+        color: DimGray
+    .luke_left_math
+        position: relative
+        left: -3em
+    .luke_right_world
+        position: relative
+        right: -3em
+    .luke_adverts
+        text-align: center
+        color: lightgray
+        font-size: 60%
+    
+    h2 //sections
+        font-size: 120%
+        color: lightgray
+        font-weight: bold
+        margin-top: 5ex
+        
+    
+.poem
+    @extend .piece
+    .piece_header
+        margin-bottom: 4ex
+    .piececontents
+        margin:
+            top: 3ex
+            left: 3em
+        font-family: Lora, serif
+    // .c1, .c0
+    //     margin-top: 0px
+    //     margin-bottom: 0px
+    // p:first-child
+    //     margin-top: 3ex
+    // .c2
+    //     margin-top: 3ex
+
+    .songPart
+        color: lightgray
+        position: relative
+        left: 0em
+    .tag_right_dates
+        color: lightgray
+        position: relative
+        right: -5em
+            
+.haiku
+    @extend .poem
+    .piececontents
+        font-size: 120%
+        margin-left: 120px
+        text-align: left
+    
+.issuedownload
+    text-align: center
+    margin-bottom: 5ex
+    #title
+        font-size: 140%
+        color: $charcoal
+        margin-bottom: 0.5ex
+    #pic
+        img 
+            width: 350px
+            box-shadow: 5px 5px 5px #ccc
+            margin-bottom: 5px
+    .downloadlink
+        margin-right: 2ex
+    
+#issue-footer
+    position: fixed
+    bottom: 30px
+    left: $content-max-width+10em
+    +no-link-underline
+    +link-color($ghost-gray,$orqblue)
+    font-family: Alice, serif
+    font-weight: bold
+    a
+        font-size: 130%
+        padding: 2px
+    a:hover
+        +single-box-shadow(lighten($ghost-gray,15%))
+        
+        
+    
+.social
+    +horizontal-center($content-min-width)
+    .container
+        margin-left: 85px
+    .social-line
+        opacity: 0.60
+        display: table-row
+        .social-button
+            display: table-cell
+            vertical-align: middle
+            padding:
+                right: 10px
+                left: 10px
+            // .like-button
+            //     width: 52px
+            //     overflow: hidden
+
+.pagefooter
+    margin-top: 80px
+    border-top: solid 1px $ghost-gray
+    +horizontal-center( 100% )
+    +alicefont
+    +no-link-underline 
+    color: lightgray
+    +link-color(lighten($charcoal,40%),$charcoal)
+    .orqlogo
+        padding-top: 10px
+    .publishingteam
+        font-size: 80%
+                

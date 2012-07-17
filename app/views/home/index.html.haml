@@ -1,12 +1,16 @@
 .issueannounce
   %h2 Current Issue
-  %h3=@current_issue.title
-  %h4=@current_issue.season
-
+  .issuetitle=link_to @current_issue #.title,urlify(@current_issue.title)
+  .issueseason=@current_issue.season
+  =issue_cover(@current_issue)
+  .issuedescription.donthyphenate=@current_issue.description
+    
 .issueannounce
   %h3 Past Issues
 
 .olderissues
-  -@past_issues.each do |issue|
-    %h3=issue.title
-    %h4=issue.number
+  -@back_issues.each do |issue|
+    .issuetitle=link_to issue # issue.title,issue
+    .issueseason=issue.season
+    =issue_cover(issue)
+    .issuedescription.donthyphenate=issue.description

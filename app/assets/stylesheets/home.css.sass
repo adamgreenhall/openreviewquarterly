@@ -1,3 +1,42 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$navbarBackground: #eeeeee //bottom of navbar color
+$navbarBackgroundHighlight: white //top of navbar color
+$navbarLinkColor: gray
+$navbarLinkColorHover: black
+@import "bootstrap"
+@import "bootstrap-responsive"
+@import "mixins"
+
+.issueannounce
+    +announcestyle
+
+.issueheader 
+    .issueannounce
+        +announcestyle
+        
+    .current
+        .issuetitle
+            font-size: 320%
+        .issuedescription
+            +horizontal-center( $content-min-width + 5em )
+            font-size: 90%
+        margin-bottom: 60px
+
+.olderissues
+    +horizontal-center( $content-min-width )
+    // overflow: scroll
+
+    .issueheader
+        display: table-cell
+        vertical-align: top
+    
+        .older
+            +horizontal-center( $content-max-width / 3 )
+            .issuetitle
+                font-size: 120%
+                // @include horizontal-center( 8em )
+            .issuedescription
+                +horizontal-center( $content-max-width / 3 )

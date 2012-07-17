@@ -1,13 +1,32 @@
 rails generate model issue title:string number:integer season:string is_published:boolean description:string
-rails generate model piece title:string number:integer author_id:integer issue_id:integer type:string
+rails generate model piece title:string number:integer author_id:integer issue_id:integer kind:string
 rails generate model author first_name:string last_name:string
+#forgot some stuff
+rails generate migration AddBioToAuthor biography:string
+rails generate migration AddContentToPiece content:string
 
-#add some belongs_to has_many associations
+#add some belongs_to has_many associations to the model class defs
 rake db:create
 
 
 
-rails generate controller home index about next
-rails generate controller issues index new edit
-rails generate controller piece
-rails generate controller author
+rails generate controller home index about next tech people
+rails generate controller issue index new edit
+rails generate controller piece index new edit
+rails generate controller author index new edit 
+
+rails console
+    Issue.new(:title=>'Unplugging',:number=>1,:description=>'what are you looking forward to leaving?',:is_published=>true,:season=>'Winter 2011').save()
+    Issue.new(:title=>'Adventure',:number=>2,:description=>'take an adventure and write about it.',:is_published=>true,:season=>'Spring 2011').save()
+    Issue.new(:title=>'Digital Presence',:number=>3,:description=>'what does your digital self look like?',:is_published=>true,:season=>'Summer 2011').save()
+    Issue.new(:title=>'Interview',:number=>4,:description=>"this is your opportunity to inhabit another's mind",:is_published=>true,:season=>'Autumn 2011').save()
+    Issue.new(:title=>'Habit',:number=>5,:description=>'commit to a change, experience it, and record',:is_published=>true,:season=>'Winter 2012').save()
+    Issue.new(:title=>'Cities',:number=>6,:description=>'',:is_published=>false,:season=>'Summer 2012').save()
+    
+
+for each author:
+    Author.new(:first_name=>'',:last_name=>'', :biography=>'').save()
+
+for each piece in issue:
+    iid = Issue.where(:number=>1)[0].id
+    Piece.new(:number=>1, :title=>'', :kind=>'', :content=>'',:issue_id=>iid, :author_id=>aid).save()

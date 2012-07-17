@@ -1,0 +1,56 @@
+@import 'compass'
+
+$light-blue: #96c7cd
+$orqblue: lighten($light-blue,15%)
+$orqbluedark: darken($orqblue,50%)
+$charcoal: #696969
+$ghost-gray: #cdcdcd
+$tocbarcolor: #FAFAFA
+$contribimgwidth: 150px
+$contribimgmargin: 50px
+$content-max-width: 30em
+$content-min-width: 20em
+$noborder: 0px
+
+@mixin max-min-width
+    max-width: $content-max-width
+    min-width: $content-min-width
+
+@mixin drop-max-min-width
+    max-width: none
+    min-width: none
+
+@mixin alicefont
+    font-family: "Alice", serif
+
+@mixin uppercase
+    text-transform: uppercase
+
+@mixin no-link-underline
+    a
+        border-bottom: 0px
+
+@mixin link-color($linkcolor, $hover: false, $active: false, $visited: false, $focus: false)
+    a
+        +link-colors($linkcolor, $hover, $active, $visited, $focus)
+
+@mixin horizontal-center($width)
+    width: $width
+    margin-left: auto
+    margin-right: auto
+    text-align: center    
+
+@mixin announcestyle
+    color: lightgray
+    text-align: center
+    display: block
+    margin-bottom: 30px
+    letter-spacing: 0.4em
+    // padding-left: 0.5em
+    +horizontal-center( $content-min-width )
+    @include uppercase
+
+
+.handwriting
+    font-family: Georgia,Serif
+    font-style: italic
