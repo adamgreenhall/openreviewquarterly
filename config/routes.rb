@@ -1,6 +1,6 @@
 Orq::Application.routes.draw do
   root :to => 'home#index'
-
+  match ':issue_title'=>'issue#index'
   get "issue/index"
   get "piece/index"
   get "author/index"
