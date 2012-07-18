@@ -4,11 +4,12 @@ Orq::Application.routes.draw do
   root :to => 'home#index'
   get "about" => 'home#about'
   match "next" => 'home#next'
-  
-  # match ':issue_title'=>'issue#index', :as => :issues
-  #match "people/:author_name" => 'author#index', :as => :author
   match "people" => 'home#people'
+  
+  match ':issue_title'=>'issues#index', :as => :issues
+  match "people/:author_name" => 'authors#index', :as => :author
   get 'issues/all'
+  
   resources :issues
   resources :authors
   resources :pieces

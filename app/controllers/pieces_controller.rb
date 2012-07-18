@@ -1,4 +1,4 @@
-class PieceController < ApplicationController
+class PiecesController < ApplicationController
   before_filter :authenticate_admin!, :only => [:new,:edit]
   def index
   end
