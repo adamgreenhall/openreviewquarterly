@@ -1,4 +1,5 @@
 class IssueController < ApplicationController
+  before_filter :authenticate_admin!, :only => [:new,:edit]
   def index
     def get_issue_from_title(title)
       title=title.gsub('-',' ').gsub('_',' ')

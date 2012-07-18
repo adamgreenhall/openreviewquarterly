@@ -1,8 +1,9 @@
 class PieceController < ApplicationController
+  before_filter :authenticate_admin!, :only => [:new,:edit]
   def index
   end
 
-  def new
+  def new 
   end
 
   def edit

@@ -1,4 +1,5 @@
 class AuthorController < ApplicationController
+  before_filter :authenticate_admin!, :only => [:new,:edit]
   def index
   end
 

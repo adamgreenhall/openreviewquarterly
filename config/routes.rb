@@ -1,20 +1,15 @@
 Orq::Application.routes.draw do
-  root :to => 'home#index'
-  match ':issue_title'=>'issue#index'
-  get "issue/index"
-  get "piece/index"
-  get "author/index"
+  devise_for :admins
 
+  root :to => 'home#index'
   get "about" => 'home#about'
   match "next" => 'home#next'
+  
+  match ':issue_title'=>'issue#index'
+  match "people/:author_name" => 'author#index'
   match "people" => 'home#people'
 
-  get "issue/new"
-  get "issue/edit"
-  get "author/new"
-  get "author/edit"
-  get "piece/new"
-  get "piece/edit"
+  resources :issue, :author, :piece
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
