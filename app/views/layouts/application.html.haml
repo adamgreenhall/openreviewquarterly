@@ -1,0 +1,23 @@
+!!!
+%html.home{:lang => "en"}
+  %head
+    %title Open Review Quarterly
+    =stylesheet_link_tag 'application.css'    
+    =javascript_include_tag 'application.js'    
+    =analytics_init if Rails.env.production?    
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+%body
+  .header
+    .container
+      .title
+        %a{:href => "/"} Open Review Quarterly
+      .navigationbar
+        .navlink
+          %a{:href => "/about"} about
+        .navlink
+          %a{:href => "http://orq.tumblr.com/"} blog
+        .navlink
+          %a{:href => "/people"} people
+        .navlink
+          %a{:href => "/submit"} submit
+  .content=yield

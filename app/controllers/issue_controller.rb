@@ -7,6 +7,7 @@ class IssueController < ApplicationController
 
     @issue=get_issue_from_title(params[:issue_title])
     raise ActionController::RoutingError.new('Issue not found') if @issue.nil?
+    @pieces=@issue.pieces.where("number IS NOT NULL").order(:number)
   end
 
   def new

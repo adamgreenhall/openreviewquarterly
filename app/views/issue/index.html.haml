@@ -1,3 +1,21 @@
-%h1=@issue.title
-%h3=@issue.season
-%h2=@issue.description
+.issueheader 
+  .issuetitle=link_to_issue(@issue)
+  .issueseason=@issue.season
+  .issuedescription.donthyphenate=@issue.description
+            
+#tableofcontents
+  .toc_head Contents
+  .tocpieces
+  - @pieces.each do |piece|
+    .pieceheader{:id=>'toc-'+urlify(piece.title)}
+      %span.title.donthyphenate=link_to_piece(piece,true) #in_issue=true
+      %span.author=link_to_author(piece.author)
+      .pieceheaderbar
+
+#pieces
+  - @pieces.each do |piece|
+    .pieceheader{:id=>'#'+urlify(piece.title)}
+      %span.title.donthyphenate=link_to_piece(piece,true) #in_issue=true
+      %span.author=link_to_author(piece.author)
+      .pieceheaderbar
+    .piececontents.hypenate=raw(piece.content)
