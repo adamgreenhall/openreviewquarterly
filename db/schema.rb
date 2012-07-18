@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120718031731) do
+ActiveRecord::Schema.define(:version => 20120718044905) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(:version => 20120718031731) do
     t.string   "title"
     t.integer  "number"
     t.string   "season"
-    t.boolean  "is_published"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.boolean  "is_published", :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "description"
   end
 

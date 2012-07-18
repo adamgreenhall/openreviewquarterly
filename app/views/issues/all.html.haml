@@ -1,0 +1,16 @@
+%table
+  %thead
+    %tr 
+      %td published
+      %td number
+      %td title
+      %td season
+      %td description
+  %tbody
+    - @issues.each do |issue|
+      %tr 
+        %td=issue.is_published
+        %td=issue.number
+        %td=issue.title
+        %td=issue.season
+        %td=issue.description
