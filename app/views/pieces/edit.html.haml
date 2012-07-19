@@ -1,2 +1,2 @@
-%h1 Piece#edit
-%p Find me in app/views/piece/edit.html.haml
+%h1 Edit existing piece
+=render :partial=>'form',:locals=>{:piece=>@piece,:authors=>@authors,:issues=>@issues}

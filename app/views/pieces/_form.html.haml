@@ -1,0 +1,12 @@
+= simple_form_for(piece, :url => 'pieces/create', :method => :post) do |f|
+  - piece.errors.full_messages.each do |msg|
+    %p=msg
+  =f.label :title
+  =f.input_field :title
+  =f.label :number
+  =f.input_field :number
+  =f.association :author
+  =f.association :issue
+  =f.input :content, :input_html => {:style => 'width: 800px; height: 400px'}
+
+  =f.button :submit

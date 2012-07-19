@@ -1,7 +1,7 @@
 class PiecesController < ApplicationController
   before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:all]
   def show
-    if params[:issue_title]
+    if params[:issue_title] && params[:piece_title] 
       @piece=get_piece_from_titles(params)
       raise ActionController::RoutingError.new('Piece not found') if @piece.nil?
     else
@@ -11,10 +11,12 @@ class PiecesController < ApplicationController
 
   def new
     @piece=Piece.new()
+    @authors=Authors.all
+    @issues=Issues.all
   end
 
   def edit
-    @piece=Piece.find(params[:piece])
+    @piece=Piece.find(params[:id])
   end
 
   def create
@@ -27,9 +29,10 @@ class PiecesController < ApplicationController
   end
   
   def destroy
-    Piece.find(params[:piece]).delete
+    Piece.find(params[:id]).delete
   end
   
   def all
+    @pieces=Piece.all
   end
 end

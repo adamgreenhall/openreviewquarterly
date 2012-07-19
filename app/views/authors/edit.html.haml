@@ -1,2 +1,2 @@
-%h1 Author#edit
-%p Find me in app/views/author/edit.html.haml
+%h1 Edit existing author
+=render :partial=>'form',:locals=>{:author=>@author}

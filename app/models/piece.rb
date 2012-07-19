@@ -9,4 +9,9 @@ class Piece < ActiveRecord::Base
   def nice_name
     (self.title.nil? || self.title=='') ? 'Untitled' : self.title
   end
+  
+  def author_select(incoming_id_from_form)
+    self.author = Author.find(incoming_id_from_form)
+  end
+
 end
