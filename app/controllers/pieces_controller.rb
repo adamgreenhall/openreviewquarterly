@@ -1,6 +1,12 @@
 class PiecesController < ApplicationController
-  before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy]
-  def index
+  before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:all]
+  def show
+    if params[:issue_title]
+      @piece=get_piece_from_titles(params)
+      raise ActionController::RoutingError.new('Piece not found') if @piece.nil?
+    else
+      @piece=Piece.find(params[:id])
+    end
   end
 
   def new
@@ -24,4 +30,6 @@ class PiecesController < ApplicationController
     Piece.find(params[:piece]).delete
   end
   
+  def all
+  end
 end

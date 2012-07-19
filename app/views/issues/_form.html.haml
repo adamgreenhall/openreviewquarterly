@@ -1,5 +1,5 @@
-= simple_form_for(@issue, :html => {:class => 'form-horizontal'}) do |f|
-  - @issue.errors.full_messages.each do |msg|
+= simple_form_for(issue, :url => 'issues/create', :method => :post) do |f|
+  - issue.errors.full_messages.each do |msg|
     %p=msg
   =f.label :title
   =f.input_field :title
@@ -14,5 +14,5 @@
           :as => :radio_buttons, 
           :item_wrapper_class => 'inline',
           :label_method => :last,
-          :checked => true
+          :checked => true,
   =f.button :submit

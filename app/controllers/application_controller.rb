@@ -10,5 +10,10 @@ class ApplicationController < ActionController::Base
     Author.limit(1).where("first_name like ? OR last_name like ?", "%#{first}%","%#{last}").first
   end
 
+  def get_piece_from_titles(params)
+     issue=get_issue_from_title(params[:issue_title])
+     title=params[:piece_title].gsub('-',' ').gsub('_',' ')
+     issue.pieces.where("title like ?","%#{title}").limit(1).first
+  end
 
 end

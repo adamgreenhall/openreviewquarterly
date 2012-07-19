@@ -15,7 +15,7 @@
 #pieces
   - @pieces.each do |piece|
     .pieceheader{:id=>urlify(piece.title)}
-      %span.title.donthyphenate=link_to_piece(piece,false)
-      %span.author=link_to_author(piece.author)
+      .title.donthyphenate=link_to_piece(piece,false)
+      .author=link_to_author(piece.author)
       .pieceheaderbar
     .piececontents.hypenate=raw(piece.content)

@@ -1,8 +1,12 @@
 class IssuesController < ApplicationController
   before_filter :authenticate_admin!, :only => [:new,:edit,:create,:all]
-  def index
-    @issue=get_issue_from_title(params[:issue_title])
-    raise ActionController::RoutingError.new('Issue not found') if @issue.nil?
+  def show
+    if params[:issue_title]
+      @issue=get_issue_from_title(params[:issue_title])
+      raise ActionController::RoutingError.new('Issue not found') if @issue.nil?
+    else
+      @issue=Issue.find(params[:id])
+    end
     @pieces=@issue.pieces.where("number IS NOT NULL").order(:number)
   end
 
@@ -11,7 +15,7 @@ class IssuesController < ApplicationController
   end
 
   def edit
-    @issues=Issue.all()
+    @issue=Issue.find(params[:id])
   end
 
   def create
