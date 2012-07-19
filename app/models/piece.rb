@@ -3,4 +3,10 @@ class Piece < ActiveRecord::Base
   validates_presence_of :title, :author_id
   belongs_to :issue
   belongs_to :author
+  def is_published
+    self.issue.is_published
+  end
+  def nice_name
+    (self.title.nil? || self.title=='') ? 'Untitled' : self.title
+  end
 end

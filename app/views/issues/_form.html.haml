@@ -1,0 +1,18 @@
+= simple_form_for(@issue, :html => {:class => 'form-horizontal'}) do |f|
+  - @issue.errors.full_messages.each do |msg|
+    %p=msg
+  =f.label :title
+  =f.input_field :title
+  =f.label :season
+  =f.input_field :season
+  =f.label :number
+  =f.input_field :number
+  =f.label :description
+  =f.input_field :description
+  = f.input :is_published, 
+          :collection => [[true, 'Published'], [false, 'Hidden']], 
+          :as => :radio_buttons, 
+          :item_wrapper_class => 'inline',
+          :label_method => :last,
+          :checked => true
+  =f.button :submit

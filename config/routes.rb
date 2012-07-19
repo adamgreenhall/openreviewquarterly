@@ -3,8 +3,9 @@ Orq::Application.routes.draw do
 
   root :to => 'home#index'
   get "about" => 'home#about'
-  match "next" => 'home#next'
-  match "people" => 'home#people'
+  get "next" => 'home#next'
+  get "people" => 'authors#all'
+  get "submit" => 'home#submit'
   
   match ':issue_title'=>'issues#index', :as => :issues
   match "people/:author_name" => 'authors#index', :as => :author

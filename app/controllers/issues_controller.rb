@@ -22,7 +22,7 @@ class IssuesController < ApplicationController
       redirect_to '/issues/new'
     end
   end
-  
+    
   def all
     @issues=Issue.order(:number).all()
   end  

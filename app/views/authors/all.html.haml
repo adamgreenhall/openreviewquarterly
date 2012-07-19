@@ -1,0 +1,4 @@
+- @authors.each do |author|
+  .contributor
+    .pic=link_to author_photo(author), 'people/'+urlify(author.name)
+    .name=link_to_author(author)
