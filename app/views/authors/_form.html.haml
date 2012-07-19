@@ -3,18 +3,17 @@
     %p=msg
   =f.input :first_name
   =f.input :last_name
-  =f.input :biography, :input_html => {:style => 'width: 800px'}, :label=>'Biography'
+  =f.input :biography, :input_html => {:style => 'width: 600px; height: 100px'}
   =f.button :submit
 
 %h2 Biography Preview
-#preview_area{:style=>'border: 1px solid black'}
+#preview_area{:style=>'border: 1px solid black; width: 600px'}
 
 :javascript
   function showPreview(){
     $('#preview_area').html( $('#author_biography').val() );
   };
   $( function() {
-      $("label[for='author_biography']").append("<span><a id='preview_bio' href='#'> (preview)</a></span>");
-      $( "#preview_bio" ).click( showPreview );
+      $( "#author_biography" ).keyup(function(){showPreview();});
       showPreview();
   } );

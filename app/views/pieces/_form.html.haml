@@ -10,3 +10,16 @@
   =f.input :content, :input_html => {:style => 'width: 800px; height: 400px'}
 
   =f.button :submit
+  
+  
+%h2 Content Preview
+#preview_area{:style=>'border: 1px solid black; width: 600px'}
+
+:javascript
+  function showPreview(){
+    $('#preview_area').html( $('#piece_content').val() );
+  };
+  $( function() {
+      $( "#piece_content" ).keyup(function(){showPreview();});
+      showPreview();
+  } );  
