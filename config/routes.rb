@@ -6,6 +6,7 @@ Orq::Application.routes.draw do
   get "next" => 'home#next'
   get "people" => 'authors#all'
   get "submit" => 'home#submit'
+  get "admin" => 'admins#index'
   
   get ':issue_title'=>'issues#show', :as => :issues
   get "people/:author_name" => 'authors#show', :as => :authors

@@ -1,2 +1,19 @@
 %h1 Edit existing issue
 =render :partial=>'form',:locals=>{:issue=>@issue}
+
+%section
+  %h2 Edit pieces
+  %table
+    -@pieces.each do |piece|
+      %tr
+        %td{:style=>'padding: 3px 10px'}=link_to piece.nice_name,"/pieces/#{piece.id}/edit"
+        %td=piece.author.name
+  %h2 Edit illustrations
+  %table
+    -@illustrations.each do |piece|
+      %tr
+        %td{:style=>'padding: 3px 10px'}=link_to piece.nice_name,"/pieces/#{piece.id}/edit"
+        %td=piece.author.name
+  
+  
+// TODO - make this re-orderable
