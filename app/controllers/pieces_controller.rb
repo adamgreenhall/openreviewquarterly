@@ -28,6 +28,16 @@ class PiecesController < ApplicationController
     end
   end
   
+  def update
+    @piece=Piece.find(params[:id])
+    saved=@piece.update_attributes(params[:piece])
+    if saved
+      redirect_to "/pieces/#{@piece.id}"
+    else
+      redirect_to "/pieces/#{@piece.id}/edit"
+    end
+  end
+  
   def destroy
     Piece.find(params[:id]).delete
   end

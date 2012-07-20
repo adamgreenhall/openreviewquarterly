@@ -8,10 +8,17 @@ Orq::Application.routes.draw do
   get "submit" => 'home#submit'
   get "admin" => 'admins#index'
   
-  get ':issue_title'=>'issues#show', :as => :issues
-  get "people/:author_name" => 'authors#show', :as => :authors
   get 'pieces/:id' => 'pieces#show', :as => :pieces
   get "authors/:id" => 'authors#show', :as => :authors
+  get "issues/:id" => 'issues#show', :as => :issues
+
+  put 'pieces/:id' => 'pieces#update', :as => :pieces
+  put "authors/:id" => 'authors#update', :as => :authors
+  put "issues/:id" => 'issues#update', :as => :issues
+
+
+  get ':issue_title'=>'issues#show', :as => :issues
+  get "people/:author_name" => 'authors#show', :as => :authors
   get ":issue_title/:piece_title" => 'pieces#show', :as => :pieces
   get 'issues/all'
   

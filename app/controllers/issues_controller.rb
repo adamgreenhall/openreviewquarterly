@@ -8,6 +8,9 @@ class IssuesController < ApplicationController
       @issue=Issue.find(params[:id])
     end
     @pieces=@issue.pieces.where("number IS NOT NULL").order(:number)
+    if !@issue.is_published && !admin_signed_in?
+      redirect_to '/'
+    end
   end
 
   def new
@@ -28,6 +31,19 @@ class IssuesController < ApplicationController
       redirect_to '/issues/new'
     end
   end
+
+  def update
+    @issue=Issue.find(params[:id])
+    saved=@issue.update_attributes(params[:issue])
+    if saved
+      puts 'saved'
+      redirect_to "/issues/#{@issue.id}"
+    else
+      puts 'error'
+      redirect_to "/issues/#{@issue.id}/edit"
+    end
+  end
+
     
   def all
     @issues=Issue.order(:number).all()

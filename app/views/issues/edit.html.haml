@@ -14,6 +14,6 @@
       %tr
         %td{:style=>'padding: 3px 10px'}=link_to piece.nice_name,"/pieces/#{piece.id}/edit"
         %td=piece.author.name
-  
+        %td=image_tag "illustrations/#{urlify(piece.issue.title)}/#{urlify(piece.nice_name)}-#{urlify(piece.author.name)}.jpg"
   
 // TODO - make this re-orderable

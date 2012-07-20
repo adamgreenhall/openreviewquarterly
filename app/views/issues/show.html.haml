@@ -1,3 +1,11 @@
+-if not @issue.is_published
+  .alert
+    %button.close{"data-dismiss" => "alert"} ×
+    %strong Warning!
+    This issue isn't published yet and can only be seen by admins.
+    To publish go to the
+    =link_to 'issue edit page.',"/issues/#{@issue.id}/edit"
+
 .issueheader 
   .issuetitle=link_to_issue(@issue)
   .issueseason=@issue.season

@@ -25,6 +25,17 @@ class AuthorsController < ApplicationController
       redirect_to '/authors/new'
     end
   end
+
+  def update
+    @author=Author.find(params[:id])
+    saved=@Author.update_attributes(params[:author])
+    if saved
+      redirect_to "/authors/#{@author.id}"
+    else
+      redirect_to "/authors/#{@author.id}/edit"
+    end
+  end
+
   
   def destroy
     Author.find(params[:id]).delete

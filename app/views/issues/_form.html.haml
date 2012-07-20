@@ -1,4 +1,4 @@
-= simple_form_for(issue, :url => 'issues/create', :method => :post) do |f|
+= simple_form_for(issue) do |f|
   - issue.errors.full_messages.each do |msg|
     %p=msg
   =f.label :title
@@ -10,7 +10,6 @@
   =f.label :description
   =f.input_field :description
   = f.input :is_published, 
-          :collection => [[true, 'Published'], [false, 'Hidden']], 
           :as => :radio_buttons, 
           :item_wrapper_class => 'inline',
           :label_method => :last,
