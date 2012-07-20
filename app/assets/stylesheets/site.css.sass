@@ -1,16 +1,4 @@
 @import 'mixins'
-
-@import url("http://fonts.googleapis.com/css?family=Lora|Alice|IM+Fell+French+Canon+SC|Gentium+Basic:400,400italic")
-    
-body
-    font-family: Palatino, serif
-        // size: 14pt
-    // letter-spacing: -0.01em
-    // line-height: 150%
-    // background-color: white
-    // color: black    
-
-
 a
     text-decoration: none
     border-bottom: 1px dashed
@@ -25,8 +13,8 @@ h2
 
 
 .issue
-    @include link-color($charcoal)
-    @include no-link-underline
+    +link-color($charcoal)
+    +no-link-underline
     
 .sectionspacer
     height: 40px

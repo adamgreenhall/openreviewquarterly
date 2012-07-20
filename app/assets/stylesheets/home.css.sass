@@ -6,9 +6,21 @@ $navbarBackground: white //bottom of navbar color
 $navbarBackgroundHighlight: white //top of navbar color
 $navbarLinkColor: lightgray
 $navbarLinkColorHover: black
+$baseFontSize: 14px
+$serifFontFamily: Palatino, Georgia, serif
+
 @import "bootstrap"
 @import "bootstrap-responsive"
 @import "mixins"
+@import url("http://fonts.googleapis.com/css?family=Lora|Alice|IM+Fell+French+Canon+SC|Gentium+Basic:400,400italic")
+
+body
+  font-family: Palatino, Georgia, serif
+  // letter-spacing: -0.01em
+  // line-height: 150%
+
+// TODO move rest of site.css.sass to other files
+
 
 .navbar
   @media (max-width: 767px)
@@ -26,38 +38,3 @@ $navbarLinkColorHover: black
     padding-left: 20px
     +alicefont
     font-size: 14pt
-
-.handwriting
-  font-family: Georgia,Serif
-  font-style: italic
-    
-.issueannounce
-  +announcestyle
-
-.issueheader 
-  .issueannounce
-    +announcestyle
-        
-  .current
-    .issuetitle
-      font-size: 320%
-  .issuedescription
-    +horizontal-center( $content-min-width + 5em )
-    font-size: 90%
-  margin-bottom: 60px
-
-.olderissues
-  +horizontal-center( $content-min-width )
-  // overflow: scroll
-
-  .issueheader
-    display: table-cell
-    vertical-align: top
-
-    .older
-      +horizontal-center( $content-max-width / 3 )
-      .issuetitle
-        font-size: 120%
-        // @include horizontal-center( 8em )
-      .issuedescription
-        +horizontal-center( $content-max-width / 3 )

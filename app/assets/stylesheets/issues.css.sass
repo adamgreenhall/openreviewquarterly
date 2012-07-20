@@ -1,3 +1,19 @@
-// Place all the styles related to the issues controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins"
+.issueannounce
+  +announcestyle
+
+.issueheader 
+  .current
+    .issuetitle
+      font-size: 320%
+  .issuedescription
+    +horizontal-center( $content-min-width + 5em )
+    font-size: 90%
+  margin-bottom: 60px
+
+.olderissues
+  .issuetitle
+    font-size: 120%
+  .issuedescription
+    text-align: center
+    width: 70%

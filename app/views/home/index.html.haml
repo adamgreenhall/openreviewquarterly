@@ -1,14 +1,18 @@
 .issueannounce
-  %h2 Current Issue
-  .issuetitle=issue_link(@current_issue) #.title,urlify(@current_issue.title)
-  .issueseason=@current_issue.season
-  .issuedescription.donthyphenate=@current_issue.description
+  %p Current Issue
+  .issueheader
+    .issuetitle=issue_link(@current_issue) #.title,urlify(@current_issue.title)
+    .issueseason=@current_issue.season
+    .issuedescription.donthyphenate=@current_issue.description
     
 .issueannounce
-  %h3 Past Issues
+  %p Past Issues
 
 .olderissues
-  -@back_issues[1..-1].each do |issue|
-    .issuetitle=issue_link(issue) # issue.title,issue
-    .issueseason=issue.season
-    .issuedescription.donthyphenate=issue.description
+  -@back_issues.enum_slice(2).to_a.each do |issue_row|
+    .row
+      -issue_row.each.each_with_index do |issue,i|
+        .issueheader.span4{:class=>i==0 ? 'offset2' : ''}
+          .issuetitle=issue_link(issue) # issue.title,issue
+          .issueseason=issue.season
+          .issuedescription=issue.description
