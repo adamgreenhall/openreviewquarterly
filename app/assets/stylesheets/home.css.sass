@@ -2,41 +2,62 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$navbarBackground: #eeeeee //bottom of navbar color
+$navbarBackground: white //bottom of navbar color
 $navbarBackgroundHighlight: white //top of navbar color
-$navbarLinkColor: gray
+$navbarLinkColor: lightgray
 $navbarLinkColorHover: black
 @import "bootstrap"
 @import "bootstrap-responsive"
 @import "mixins"
 
+.navbar
+  @media (max-width: 767px)
+    margin-left: -20px
+    margin-right: -20px
+  border:
+    top: solid 5px $orqblue
+    bottom: solid 2px lightgray
+  +no-link-underline
+  a.brand
+    padding-left: 20px
+    +no-link-underline
+    color: black
+  li  
+    padding-left: 20px
+    +alicefont
+    font-size: 14pt
+
+.handwriting
+  font-family: Georgia,Serif
+  font-style: italic
+    
 .issueannounce
-    +announcestyle
+  +announcestyle
 
 .issueheader 
-    .issueannounce
-        +announcestyle
+  .issueannounce
+    +announcestyle
         
-    .current
-        .issuetitle
-            font-size: 320%
-        .issuedescription
-            +horizontal-center( $content-min-width + 5em )
-            font-size: 90%
-        margin-bottom: 60px
+  .current
+    .issuetitle
+      font-size: 320%
+  .issuedescription
+    +horizontal-center( $content-min-width + 5em )
+    font-size: 90%
+  margin-bottom: 60px
 
 .olderissues
-    +horizontal-center( $content-min-width )
-    // overflow: scroll
+  +horizontal-center( $content-min-width )
+  // overflow: scroll
 
-    .issueheader
-        display: table-cell
-        vertical-align: top
-    
-        .older
-            +horizontal-center( $content-max-width / 3 )
-            .issuetitle
-                font-size: 120%
-                // @include horizontal-center( 8em )
-            .issuedescription
-                +horizontal-center( $content-max-width / 3 )
+  .issueheader
+    display: table-cell
+    vertical-align: top
+
+    .older
+      +horizontal-center( $content-max-width / 3 )
+      .issuetitle
+        font-size: 120%
+        // @include horizontal-center( 8em )
+      .issuedescription
+        +horizontal-center( $content-max-width / 3 )

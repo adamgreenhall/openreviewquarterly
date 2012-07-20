@@ -3,45 +3,12 @@
 @import url("http://fonts.googleapis.com/css?family=Lora|Alice|IM+Fell+French+Canon+SC|Gentium+Basic:400,400italic")
     
 body
-    font:
-        family: Palatino, serif
-        size: 14pt
-    letter-spacing: -0.01em
-    line-height: 150%
-    background-color: white
-    color: black
-
-.header
-    position: absolute
-    left: 0px
-    top: 0px
-    width: 100%
-    //min-width: $content-min-width
-    border:
-        top: solid 5px $orqblue
-        bottom: solid 2px lightgray
-
-    +no-link-underline
-    
-    .container
-        display: table-row
-        .title
-            display: table-cell
-            padding-left: 30px
-            +link-color(black)
-        .navigationbar
-            display: table-row
-            .navlink
-                padding:
-                    top: 10px
-                    bottom: 10px
-                    left: 25px
-                display: table-cell
-                +alicefont 
-                +link-color(lightgray,black)
-
-            padding-bottom: 10px
-    
+    font-family: Palatino, serif
+        // size: 14pt
+    // letter-spacing: -0.01em
+    // line-height: 150%
+    // background-color: white
+    // color: black    
 
 
 a
@@ -60,15 +27,7 @@ h2
 .issue
     @include link-color($charcoal)
     @include no-link-underline
-
-#content
-    text-align: justify
-    +max-min-width
-    margin:
-        top: 100px
-        bottom: 4ex
-        left: 8em
-
+    
 .sectionspacer
     height: 40px
     
