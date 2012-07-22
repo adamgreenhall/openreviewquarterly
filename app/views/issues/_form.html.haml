@@ -1,4 +1,4 @@
-= simple_form_for(issue) do |f|
+= simple_form_for(issue,:url => { :action => action }) do |f|
   - issue.errors.full_messages.each do |msg|
     %p=msg
   =f.label :title

@@ -10,9 +10,9 @@ class PiecesController < ApplicationController
   end
 
   def new
-    @piece=Piece.new()
-    @authors=Authors.all
-    @issues=Issues.all
+    @piece=Piece.new
+    @authors=Author.all
+    @issues=Issue.all
   end
 
   def edit
@@ -24,7 +24,7 @@ class PiecesController < ApplicationController
     if saved
       redirect_to '/pieces/all'
     else #form had errors
-      redirect_to '/pieces/new'
+      render :acion=>'new'
     end
   end
   

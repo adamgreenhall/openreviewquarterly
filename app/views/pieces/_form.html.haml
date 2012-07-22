@@ -1,4 +1,4 @@
-= simple_form_for(piece,:action => 'update') do |f|
+= simple_form_for(piece,:url => { :action => action }) do |f|
   - piece.errors.full_messages.each do |msg|
     %p=msg
   =f.label :title

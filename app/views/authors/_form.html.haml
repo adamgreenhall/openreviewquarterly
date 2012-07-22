@@ -1,4 +1,4 @@
-= simple_form_for(author,:action=>:create) do |f|
+= simple_form_for(author,:url => { :action => action }) do |f|
   - author.errors.full_messages.each do |msg|
     %p=msg
   =f.input :first_name
