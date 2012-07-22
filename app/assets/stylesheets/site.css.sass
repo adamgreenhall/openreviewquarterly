@@ -1,24 +1,5 @@
-@import 'mixins'
-a
-    text-decoration: none
-    border-bottom: 1px dashed
-    color: $charcoal
-
-ul
-    list-style-type: none    
-
-h2
-    margin-top: 5ex
-    +alicefont
-
-
-.issue
-    +link-color($charcoal)
-    +no-link-underline
-    
-.sectionspacer
-    height: 40px
-    
+// TODO move rest of site.css.sass to other files
+@import 'mixins'    
 
 #contributors
     width: #{4*$contribimgwidth}
@@ -50,21 +31,6 @@ h2
                 font-size: 60% 
                 padding-right: 1ex
 
-#biopage
-    #name
-        font-size: 140%
-        font-weight: bold
-        @include alicefont
-    #pic 
-        text-align: center
-        margin-top: 3ex 
-        a
-            border-bottom: $noborder
-        img
-            width: $contribimgwidth*1.5
-            margin-bottom: 8ex
-
-
 #publisherbios
     height: 200px
     margin-bottom: 3ex
@@ -78,72 +44,6 @@ h2
                 +link-colors($light-blue)
         img
             width: 150px
-
-.issueheader
-    padding-top: 10px
-    .issueannounce
-        display: none
-    .issuetitle
-        +alicefont
-        font-size: 240%
-        text-align: center
-        +link-color(black,$orqbluedark)
-        +no-link-underline
-        margin-bottom: 0.3em
-        a:hover
-            +single-box-shadow(lighten($orqblue,12%))
-    .issueseason
-        @include alicefont
-        font-size: 90%
-        font-style: italic
-        text-align: center
-        color: $ghost-gray
-        margin-bottom: 1.5em
-    .issuedescription
-        @include horizontal-center( $content-min-width - 5em )
-        padding: 10px
-        line-height: 120%
-        border-top: 1px solid $ghost-gray
-        border-bottom: 1px solid $ghost-gray
-        margin-bottom: 60px
-        font-size: 80%
-        font-family: "Gentium Basic", serif
-        font-style: italic
-
-#tableofcontents
-    .toc_head //Contents
-        //color: lightgray
-        font-size: 160%
-        @include alicefont
-        margin-bottom: 1.4ex 
-
-    .tocpieces
-        text-align: left
-        padding-left: 1.5em
-        margin-left: 1.0em
-        border-left: 10px solid $tocbarcolor
-        .tocpiece
-            line-height: 110%
-            @include no-link-underline
-            .title
-                font-size: 110%
-                margin-bottom: 0.4ex  
-                +alicefont
-                +link-color(black,$orqbluedark)
-            .author
-                font-size: 85%
-                +link-color(gray,black)
-                padding-left: 1.5em
-            .issue
-                font-size: 85%
-                +link-color(gray,black)
-                padding-left: 1.5em
-            .illustrationlabel
-                font-style: italic
-                font-size: 80%
-            margin-bottom: 0.6em
-
-    margin-bottom: 10ex
 
 .piece
     margin-bottom: 10em
@@ -272,22 +172,7 @@ h2
             box-shadow: 5px 5px 5px #ccc
             margin-bottom: 5px
     .downloadlink
-        margin-right: 2ex
-    
-#issue-footer
-    position: fixed
-    bottom: 30px
-    left: $content-max-width+10em
-    +no-link-underline
-    +link-color($ghost-gray,$orqblue)
-    font-family: Alice, serif
-    font-weight: bold
-    a
-        font-size: 130%
-        padding: 2px
-    a:hover
-        +single-box-shadow(lighten($ghost-gray,15%))
-        
+        margin-right: 2ex        
         
     
 .social
@@ -307,16 +192,3 @@ h2
             //     width: 52px
             //     overflow: hidden
 
-.pagefooter
-    margin-top: 80px
-    border-top: solid 1px $ghost-gray
-    +horizontal-center( 100% )
-    +alicefont
-    +no-link-underline 
-    color: lightgray
-    +link-color(lighten($charcoal,40%),$charcoal)
-    .orqlogo
-        padding-top: 10px
-    .publishingteam
-        font-size: 80%
-                

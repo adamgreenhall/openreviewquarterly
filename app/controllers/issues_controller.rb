@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_filter :authenticate_admin!, :only => [:new,:edit,:create,:all]
+  before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:update,:all]
   def show
     if params[:issue_title]
       @issue=get_issue_from_title(params[:issue_title])

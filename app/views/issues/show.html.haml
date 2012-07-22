@@ -10,20 +10,26 @@
   .issuetitle=link_to_issue(@issue)
   .issueseason=@issue.season
   .issuedescription=@issue.description
-            
-#tableofcontents
-  .toc_head Contents
-  .tocpieces
-  - @pieces.each do |piece|
-    .pieceheader{:id=>'toc-'+urlify(piece.title)}
-      %span.title=link_to_piece(piece,true) #in_issue=true
-      %span.author=link_to_author(piece.author)
-      .pieceheaderbar
+
+.row            
+  #tableofcontents.span8.offset4
+    .toc_head Contents
+    .tocpieces
+      - @pieces.each do |piece|
+        .tocpiece
+          .title=link_to_piece(piece,true) #in_issue=true
+          .author=link_to_author(piece.author)
 
 #pieces
   - @pieces.each do |piece|
-    .pieceheader{:id=>urlify(piece.title)}
-      .title=link_to_piece(piece,false)
-      .author=link_to_author(piece.author)
-      .pieceheaderbar
-    .piececontents.hyphens=raw(piece.content)
+    %div{:class=>piece.kind}
+      .pieceheader{:id=>urlify(piece.title)}
+        .title=link_to_piece(piece,false)
+        .author=link_to_author(piece.author)
+        .pieceheaderbar
+      .row
+        .piececontents.hyphens.span6.offset3=raw(piece.content)
+        
+#issue-footer
+  =link_to "↑","#tableofcontents"
+  %span.current_piece=link_to '→','#'

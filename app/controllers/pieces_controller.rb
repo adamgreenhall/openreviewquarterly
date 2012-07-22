@@ -1,5 +1,5 @@
 class PiecesController < ApplicationController
-  before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:all]
+  before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:update,:all]
   def show
     if params[:issue_title] && params[:piece_title] 
       @piece=get_piece_from_titles(params)

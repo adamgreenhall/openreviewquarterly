@@ -1,7 +1,10 @@
+-@bodyid='author_page'
+
 #biopage
-  %span#name=@author.name
-  %span#desc=raw(@author.biography)
-  #pic=author_photo(@author)
+  %span.name=@author.name
+  %span.desc=raw(@author.biography)
+  .pic=author_photo(@author)
+
 #tableofcontents
   .toc_head Pieces
   .tocpieces

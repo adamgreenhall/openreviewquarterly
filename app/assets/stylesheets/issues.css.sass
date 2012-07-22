@@ -2,14 +2,42 @@
 .issueannounce
   +announcestyle
 
-.issueheader 
+.issueheader
+  margin-bottom: 60px
   .current
     .issuetitle
       font-size: 320%
+
+  padding-top: 10px
+  .issueannounce
+    display: none
+  .issuetitle
+    +alicefont
+    font-size: 240%
+    text-align: center
+    +link-color(black,$orqbluedark)
+    +no-link-underline
+    margin-bottom: 0.3em
+    a:hover
+      +single-box-shadow(lighten($orqblue,12%))
+  .issueseason
+    @include alicefont
+    font-size: 90%
+    font-style: italic
+    text-align: center
+    color: $ghost-gray
+    margin-bottom: 1.5em
   .issuedescription
     text-align: center
     width: 70%
-  margin-bottom: 60px
+    padding: 10px
+    line-height: 120%
+    border-top: 1px solid $ghost-gray
+    border-bottom: 1px solid $ghost-gray
+    margin-bottom: 60px
+    font-size: 80%
+    font-family: "Gentium Basic", serif
+    font-style: italic  
 
 .olderissues
   .issuetitle
@@ -17,3 +45,52 @@
   .issuedescription
     text-align: center
     width: 70%
+    
+#tableofcontents
+  margin-bottom: 10ex
+  .toc_head //Contents
+    //color: lightgray
+    font-size: 160%
+    @include alicefont
+    margin-bottom: 1.4ex 
+  .tocpieces
+    text-align: left
+    padding-left: 1.5em
+    margin-left: 1.0em
+    border-left: 10px solid $tocbarcolor
+    .tocpiece
+      line-height: 110%
+      margin-bottom: 0.6em
+      @include no-link-underline
+      .title
+        font-size: 110%
+        margin-bottom: 0.4ex  
+        +alicefont
+        +link-color(black,$orqbluedark)
+      .author
+        font-size: 85%
+        +link-color(gray,black)
+        padding-left: 1.5em
+      .issue
+        font-size: 85%
+        +link-color(gray,black)
+        padding-left: 1.5em
+      .illustrationlabel
+        font-style: italic
+        font-size: 80%  
+        
+
+#issue-footer
+  position: fixed
+  bottom: 30px
+  left: $content-max-width+10em
+  +no-link-underline
+  +link-color($ghost-gray,$orqblue)
+  font-family: Alice, serif
+  font-weight: bold
+  a
+    font-size: 130%
+    padding: 2px
+  a:hover
+    +single-box-shadow(lighten($ghost-gray,15%))
+

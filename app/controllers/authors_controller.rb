@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-  before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy]
+  before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:update]
   def show
     if params[:author_name]
       @author=get_author_from_name(params[:author_name])

@@ -19,4 +19,10 @@
             %li=link_to 'blog',"http://orq.tumblr.com/"
             %li=link_to 'people','/people'
             %li=link_to 'submit','/submit'
-  .container=yield
+  .container
+    =yield
+    .row
+      .pagefooter.span6.offset3
+        .publishingteam
+          %p "a collaborative project from #{link_to 'Michael Ahillen','http://twitter.com/michaelahillen'}, #{link_to 'Amelia Greenhall','http://twitter.com/ameliagreenhall'} & #{link_to 'Adam Greenhall','http://twitter.com/adamgreenhall'}"
+      

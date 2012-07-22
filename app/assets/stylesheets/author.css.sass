@@ -1,3 +1,19 @@
-// Place all the styles related to the author controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'mixins'
+body#author_page
+  .issue
+    +link-color($charcoal)
+    +no-link-underline
+    
+#biopage
+  .name
+    font-size: 140%
+    font-weight: bold
+    @include alicefont
+  .pic 
+    text-align: center
+    margin-top: 3ex 
+    a
+      border-bottom: $noborder
+    img
+      width: $contribimgwidth*1.5
+      margin-bottom: 8ex    

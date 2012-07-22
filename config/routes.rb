@@ -7,20 +7,30 @@ Orq::Application.routes.draw do
   get "people" => 'authors#all'
   get "submit" => 'home#submit'
   get "admin" => 'admins#index'
-  
+  get 'issues/all' => 'issues#all'
+
   get 'pieces/:id' => 'pieces#show', :as => :pieces
   get "authors/:id" => 'authors#show', :as => :authors
   get "issues/:id" => 'issues#show', :as => :issues
 
+  get 'pieces/new' => 'pieces#new', :as => :pieces
+  get "authors/new" => 'authors#new', :as => :authors
+  get "issues/new" => 'issues#new', :as => :issues
+
   put 'pieces/:id' => 'pieces#update', :as => :pieces
   put "authors/:id" => 'authors#update', :as => :authors
   put "issues/:id" => 'issues#update', :as => :issues
-
+  post 'pieces/:id' => 'pieces#create', :as => :pieces
+  post "authors/:id" => 'authors#create', :as => :authors
+  post "issues/:id" => 'issues#create', :as => :issues
+  delete 'pieces/:id' => 'pieces#destroy', :as => :pieces
+  delete "authors/:id" => 'authors#destroy', :as => :authors
+  delete "issues/:id" => 'issues#destroy', :as => :issues
 
   get ':issue_title'=>'issues#show', :as => :issues
   get "people/:author_name" => 'authors#show', :as => :authors
   get ":issue_title/:piece_title" => 'pieces#show', :as => :pieces
-  get 'issues/all'
+
   
   resources :issues
   resources :authors
