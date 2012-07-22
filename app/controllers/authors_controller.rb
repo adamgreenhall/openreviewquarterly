@@ -10,7 +10,7 @@ class AuthorsController < ApplicationController
   end
 
   def new
-    @author=Author.new()
+    @author=Author.new
   end
 
   def edit
@@ -22,7 +22,7 @@ class AuthorsController < ApplicationController
     if saved
       redirect_to '/authors/all'
     else #form had errors
-      redirect_to '/authors/new'
+      render :acion=>'new'
     end
   end
 

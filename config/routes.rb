@@ -9,13 +9,13 @@ Orq::Application.routes.draw do
   get "admin" => 'admins#index'
   get 'issues/all' => 'issues#all'
 
-  get 'pieces/:id' => 'pieces#show', :as => :pieces
-  get "authors/:id" => 'authors#show', :as => :authors
-  get "issues/:id" => 'issues#show', :as => :issues
-
   get 'pieces/new' => 'pieces#new', :as => :pieces
   get "authors/new" => 'authors#new', :as => :authors
   get "issues/new" => 'issues#new', :as => :issues
+
+  get 'pieces/:id' => 'pieces#show', :as => :pieces
+  get "authors/:id" => 'authors#show', :as => :authors
+  get "issues/:id" => 'issues#show', :as => :issues
 
   put 'pieces/:id' => 'pieces#update', :as => :pieces
   put "authors/:id" => 'authors#update', :as => :authors

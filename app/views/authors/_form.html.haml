@@ -1,13 +1,14 @@
-= simple_form_for(author) do |f|
+= simple_form_for(author,:action=>:create) do |f|
   - author.errors.full_messages.each do |msg|
     %p=msg
   =f.input :first_name
   =f.input :last_name
-  =f.input :biography, :input_html => {:style => 'width: 600px; height: 100px'}
+  =f.text_area :biography, :size => '80x20',:style=>'width: 60em'
+  %br
   =f.button :submit
 
 %h2 Biography Preview
-#preview_area{:style=>'border: 1px solid black; width: 600px'}
+#preview_area{:style=>'border: 1px solid black; width: 40em'}
 
 :javascript
   function showPreview(){

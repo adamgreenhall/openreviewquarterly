@@ -7,8 +7,8 @@
   =f.input_field :number
   =f.association :author
   =f.association :issue
-  =f.input :content, :input_html => {:style => 'width: 800px; height: 400px'}
-
+  =f.text_area :content, :size => '80x20',:style=>'width: 60em'
+  %br
   =f.button :submit
   
   
