@@ -1,11 +1,13 @@
 Orq::Application.routes.draw do
+  get "admin/index"
+
   devise_for :admins
 
   root :to => 'home#index'
   get "about" => 'home#about'
   get "people" => 'authors#all'
   get "submit" => 'home#submit'
-  get "admin" => 'admins#index'
+  get "admin" => 'admin#index'
   get 'issues/all' => 'issues#all'
 
   get 'pieces/new' => 'pieces#new', :as => :pieces
