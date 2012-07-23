@@ -7,7 +7,13 @@ class ApplicationController < ActionController::Base
   def get_author_from_name(name)
     name=name.gsub('-',' ').gsub('_',' ')
     first,last=name.split
-    Author.limit(1).where("first_name like ? OR last_name like ?", "%#{first}%","%#{last}").first
+    author=Author.limit(1).where("first_name like ? AND last_name like ?", "%#{first}%","%#{last}").first
+    if author.nil? 
+      # try a looser search condition 
+      return Author.limit(1).where("first_name like ? OR last_name like ?", "%#{first}%","%#{last}").first
+    else
+      return author
+    end
   end
 
   def get_piece_from_titles(params)
