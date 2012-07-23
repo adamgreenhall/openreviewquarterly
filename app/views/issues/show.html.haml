@@ -6,13 +6,14 @@
     To publish go to the
     =link_to 'issue edit page.',"/issues/#{@issue.id}/edit"
 
-.issueheader 
-  .issuetitle=link_to_issue(@issue)
-  .issueseason=@issue.season
-  .issuedescription=@issue.description
+.row.span8.offset2
+  .issueheader 
+    .issuetitle=link_to_issue(@issue)
+    .issueseason=@issue.season
+    .issuedescription=@issue.description
 
 .row            
-  #tableofcontents.span8.offset4
+  #tableofcontents.span8.offset2
     .toc_head Contents
     .tocpieces
       - @pieces.each do |piece|
@@ -20,7 +21,7 @@
           .title=link_to_piece(piece,true) #in_issue=true
           .author=link_to_author(piece.author)
 
-#pieces
+.pieces{:id=>@issue.url}
   - @pieces.each do |piece|
     %div{:class=>piece.kind}
       .pieceheader{:id=>urlify(piece.title)}
@@ -29,7 +30,8 @@
         .pieceheaderbar
       .row
         .piececontents.hyphens.span6.offset3=raw(piece.content)
-        
-#issue-footer
-  =link_to "↑","#tableofcontents"
-  %span.current_piece=link_to '→','#'
+
+.row        
+  #issue-footer.span1.offset11
+    =link_to "↑","#tableofcontents",:class=>'toc-hash-link',:id=>'to-toc-link'
+    %span=link_to '→','#',:id=>'to-piece-link'

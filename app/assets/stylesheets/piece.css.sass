@@ -1,8 +1,122 @@
 @import 'mixins'
 
 .sectionspacer
-  height: 40px
+    height: 40px
 
 .handwriting
-  font-family: Georgia,Serif
-  font-style: italic
+    font-family: Georgia,Serif
+    font-style: italic
+    
+.piece
+    margin-bottom: 10em
+    .pieceheader
+        padding-top: 30px
+        width: $content-min-width - 3em
+        margin-left: auto
+        margin-right: auto
+        text-align: center
+        .title
+            font-size: 160%
+            +uppercase
+            +alicefont
+            letter-spacing: 3px
+            
+            +no-link-underline
+            +link-color(black,$orqbluedark)
+            margin-bottom: 10px
+            .untitled
+                +link-colors($ghost-gray,darkgray)
+                
+        .author
+            +link-color($charcoal,darkgray)
+            +no-link-underline
+            font-size: 120%
+            padding-bottom: 20px
+        .divider
+            display: none
+            color: lightgray
+        margin-bottom: 1ex
+    .pieceheaderbar
+        border-bottom: 
+            style: solid
+            color: $ghost-gray
+            width: 1.5px
+        margin-bottom: 4ex
+        opacity: 0.20
+        
+        
+    .subsection
+        font-size:  120%
+        margin:
+            top: 5ex
+            bottom: 2ex
+    .illustration
+        @include horizontal-center($content-min-width)
+        margin-top: 2ex
+        .titleauthor
+            text-align: right
+            font-size: 60%
+            color: $charcoal
+            @include no-link-underline
+        margin-bottom: 2ex
+            
+
+.prose
+    @extend .piece
+    .madlib
+        color: lightgray
+        padding:
+            left: 0.5em
+            right: 0.5em
+    .dating_story
+        color: DimGray
+    .luke_left_math
+        position: relative
+        left: -3em
+    .luke_right_world
+        position: relative
+        right: -3em
+    .luke_adverts
+        text-align: center
+        color: lightgray
+        font-size: 60%
+    
+    h2 //sections
+        font-size: 120%
+        color: lightgray
+        font-weight: bold
+        margin-top: 5ex
+        
+    
+.poem
+    @extend .piece
+    .piece_header
+        margin-bottom: 4ex
+    .piececontents
+        margin:
+            top: 3ex
+            left: 3em
+        font-family: Lora, serif
+    // .c1, .c0
+    //     margin-top: 0px
+    //     margin-bottom: 0px
+    // p:first-child
+    //     margin-top: 3ex
+    // .c2
+    //     margin-top: 3ex
+
+    .songPart
+        color: lightgray
+        position: relative
+        left: 0em
+    .tag_right_dates
+        color: lightgray
+        position: relative
+        right: -5em
+            
+.haiku
+    @extend .poem
+    .piececontents
+        font-size: 120%
+        margin-left: 120px
+        text-align: left    
