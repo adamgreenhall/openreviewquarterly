@@ -9,9 +9,24 @@
   =f.input_field :number
   =f.label :description
   =f.input_field :description
+  =f.label :prompt
+  =f.text_area :prompt, :size => '80x20',:style=>'width: 60em'
+  
   = f.input :is_published, 
           :as => :radio_buttons, 
           :item_wrapper_class => 'inline',
           :label_method => :last,
           :checked => true
   =f.button :submit
+  
+%h2 Prompt Preview
+#preview_area{:style=>'border: 1px solid black; width: 600px'}
+
+:javascript
+  function showPreview(){
+    $('#preview_area').html( $('#issue_prompt').val() );
+  };
+  $( function() {
+      $( "#piece_content" ).keyup(function(){showPreview();});
+      showPreview();
+  } );  

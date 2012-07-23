@@ -8,7 +8,8 @@ class HomeController < ApplicationController
   def about
   end
 
-  def next
+  def submit
+    @issue=Issue.where(:is_published=>false).order('number').last
   end
   
   def tech

@@ -1,5 +1,5 @@
 class Issue < ActiveRecord::Base
-  attr_accessible :is_published, :number, :season, :title, :description
+  attr_accessible :is_published, :number, :season, :title, :description, :prompt
   has_many :pieces
   has_many :authors, :through => :pieces
   validates_presence_of :number, :title, :season

@@ -3,7 +3,6 @@ Orq::Application.routes.draw do
 
   root :to => 'home#index'
   get "about" => 'home#about'
-  get "next" => 'home#next'
   get "people" => 'authors#all'
   get "submit" => 'home#submit'
   get "admin" => 'admins#index'
