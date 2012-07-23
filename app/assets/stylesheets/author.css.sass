@@ -1,19 +1,36 @@
 @import 'mixins'
+body#authors_list    
+  .contributor
+    text-align: center
+    +no-link-underline
+    +link-color($charcoal,black)
+    .pic img
+      +single-box-shadow(lighten($ghost-gray,15%),2px,4px)
+    .pic img:hover
+      +single-box-shadow($orqblue)
+    .name
+      text-transform: uppercase
+      font-size: 60% 
+      padding-right: 1ex
+      padding-bottom: 30px
+
+
+
 body#author_page
   .issue
     +link-color($charcoal)
     +no-link-underline
-    
-#biopage
-  .name
-    font-size: 140%
-    font-weight: bold
-    @include alicefont
-  .pic 
-    text-align: center
-    margin-top: 3ex 
-    a
-      border-bottom: $noborder
-    img
-      width: $contribimgwidth*1.5
-      margin-bottom: 8ex    
+  #biopage
+    margin-top: 20px
+    .name
+      font-size: 140%
+      font-weight: bold
+      @include alicefont
+    .pic 
+      text-align: center
+      margin-top: 3ex 
+      a
+        border-bottom: $noborder
+      img
+        width: $contribimgwidth*1.5
+        margin-bottom: 8ex    

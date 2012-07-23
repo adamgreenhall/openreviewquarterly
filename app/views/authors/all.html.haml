@@ -1,4 +1,8 @@
-- @authors.each do |author|
-  .contributor
-    .pic=link_to author_photo(author), 'people/'+urlify(author.name)
-    .name=link_to_author(author)
+-@title='ORQ Contributors'
+-@bodyid='authors_list'
+- @authors.enum_slice(3).to_a.each do |row|
+  .row
+    -row.each do |author|
+      .contributor.span4
+        .pic=link_to author_photo(author), author.url
+        .name=link_to_author(author)

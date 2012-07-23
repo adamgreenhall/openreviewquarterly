@@ -1,6 +1,10 @@
-.pieceheader
-  .title.donthyphenate=@piece.nice_name
-  .author=link_to_author(@piece.author)
-  .issue=link_to_issue(@piece.issue)
-  .pieceheaderbar
-.piececontents.hyphens=raw(@piece.content)
+-@title=@piece.title
+
+.row
+  .piece.span6.offset3
+    .pieceheader
+      .title.donthyphenate=@piece.nice_name
+      .author=link_to_author(@piece.author)
+      .issue=link_to_issue(@piece.issue)
+      .pieceheaderbar
+    .piececontents.hyphens=raw(@piece.content)

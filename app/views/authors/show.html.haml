@@ -1,17 +1,18 @@
 -@bodyid='author_page'
+.row
+  #biopage.span8.offset2
+    %span.name=@author.name
+    %span.desc=raw(@author.biography)
+    .pic=author_photo(@author)
 
-#biopage
-  %span.name=@author.name
-  %span.desc=raw(@author.biography)
-  .pic=author_photo(@author)
-
-#tableofcontents
-  .toc_head Pieces
-  .tocpieces
-    -@pieces.each do |piece|
-      .pieceheader{:id=>'toc-'+urlify(piece.nice_name)}
-      .title.donthyphenate=link_to_piece(piece)
-      .issue=link_to_issue(piece.issue)
+.row.span8.offset2
+  #tableofcontents
+    .toc_head Pieces
+    .tocpieces
+      -@pieces.each do |piece|
+        .piece-toc
+          %span.title #{link_to_piece(piece,true)} - 
+          %span.issue=link_to_issue(piece.issue)
 
 
 

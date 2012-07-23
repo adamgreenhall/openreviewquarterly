@@ -7,7 +7,13 @@ class Piece < ActiveRecord::Base
     self.issue.is_published
   end
   def nice_name
-    (self.title.nil? || self.title=='') ? 'Untitled' : self.title
+    title=(self.title.nil? || self.title=='') ? 'Untitled' : self.title
+    (self.kind=='illustration') ?  'Ilustration for '+title : title
+  end
+  
+  def url
+    title=(self.title.nil? || self.title=='') ? 'Untitled' : self.title
+    URLify.urlify( ((self.kind=='illustration') ? 'illustration ' : '') + title, '-')
   end
   
   def author_select(incoming_id_from_form)

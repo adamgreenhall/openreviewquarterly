@@ -6,6 +6,6 @@ class Issue < ActiveRecord::Base
   validates_inclusion_of :is_published, :in => [true, false]
   
   def url
-    URLify.urlify(self.title,'-')
+    '/'+URLify.urlify(self.title,'-')
   end
 end

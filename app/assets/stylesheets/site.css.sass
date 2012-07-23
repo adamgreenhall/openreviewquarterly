@@ -1,36 +1,6 @@
 // TODO move rest of site.css.sass to other files
 @import 'mixins'    
 
-#contributors
-    width: #{4*$contribimgwidth}
-    .container
-        padding-top: 5px
-        margin-left: 0px
-        .everytwo
-            display: none
-        .everythree
-            display: block
-        .contributor
-            height: $contribimgwidth+$contribimgmargin
-            width: $contribimgwidth+$contribimgmargin
-            // padding-bottom: 20px
-            display: table-cell
-            +no-link-underline
-            +link-color($charcoal,black)
-            #pic img
-                width: $contribimgwidth
-                +single-box-shadow(lighten($ghost-gray,15%),2px,4px)
-            #pic img:hover
-                +single-box-shadow($orqblue)
-                // +single-transition("all",1,"ease-in-out")
-            #name
-                width: $contribimgwidth
-                text:
-                    transform: uppercase
-                    align: center
-                font-size: 60% 
-                padding-right: 1ex
-
 #publisherbios
     height: 200px
     margin-bottom: 3ex
@@ -64,7 +34,6 @@
         
     
 .social
-    +horizontal-center($content-min-width)
     .container
         margin-left: 85px
     .social-line
