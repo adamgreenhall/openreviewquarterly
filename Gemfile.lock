@@ -71,8 +71,8 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
-    heroku (2.28.15)
-      heroku-api (~> 0.2.12)
+    heroku (2.29.0)
+      heroku-api (~> 0.2.13)
       launchy (>= 0.3.2)
       netrc (~> 0.7.5)
       rest-client (~> 1.6.1)
@@ -87,6 +87,9 @@ GEM
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
+    jquery-ui-rails (1.0.0)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.7.3)
     launchy (2.1.0)
       addressable (~> 2.2.6)
@@ -184,6 +187,7 @@ DEPENDENCIES
   heroku
   jquery-datatables-rails
   jquery-rails
+  jquery-ui-rails
   modernizr-rails
   pg
   rails (= 3.2.2)

@@ -23,10 +23,11 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-ui-rails'
+  gem 'jquery-rails'
+  gem 'modernizr-rails'
 end
 
-gem 'jquery-rails'
-gem 'modernizr-rails'
 gem 'bootstrap-sass'
 gem 'jquery-datatables-rails'
 gem 'csv-mapper'

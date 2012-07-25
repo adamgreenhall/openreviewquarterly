@@ -1,7 +1,18 @@
+-@bodyid='admin'
 %h1 Edit existing issue
-=render :partial=>'form',:locals=>{:issue=>@issue,:action=>'update'}
+.row
+  .span6=render :partial=>'form',:locals=>{:issue=>@issue,:action=>'update'}
+  .span6
+    %h2 Piece order
+    .row
+      %ul#piece_order.span5
+        -@pieces.each_with_index do |piece,i|
+          %li.piece_order_elem.ui-state-default{:id=>piece.id} 
+            %span.number #{i+1}
+            %span.name : #{piece.title} - #{piece.author.name}
 
 %section
+  %h2=link_to 'New piece','/pieces/new'
   %h2 Edit pieces
   %table
     -@pieces.each do |piece|
@@ -14,6 +25,19 @@
       %tr
         %td{:style=>'padding: 3px 10px'}=link_to piece.nice_name,"/pieces/#{piece.id}/edit"
         %td=piece.author.name
-        %td=image_tag "illustrations/#{urlify(piece.issue.title)}/#{urlify(piece.nice_name)}-#{urlify(piece.author.name)}.jpg"
-  
-// TODO - make this re-orderable
+
+:javascript
+  $(document).ready(function(){
+    $( "#piece_order" ).sortable({ 
+      placeholder: "ui-state-highlight",
+      update: function(event,ui){
+        var order = $('#piece_order').sortable('toArray'); 
+        // udpate the numbering ui
+        $('li.piece_order_elem').each(function(i){ $('.number',this).text(i+1); });
+        // update the numbering in the form
+        $('input#issue_piece_order').val(JSON.stringify(order));
+        
+      },
+    });
+    $( "#piece_order" ).disableSelection();
+  });

@@ -1,3 +1,4 @@
+require 'json'
 class IssuesController < ApplicationController
   before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:update,:all]
   def show
@@ -34,12 +35,21 @@ class IssuesController < ApplicationController
 
   def update
     @issue=Issue.find(params[:id])
+    piece_order=JSON.parse(params[:issue]['piece_order'])
+    params[:issue].delete :piece_order
+    
+    old_piece_order=@issue.pieces.order(:number).map{|p| p.id}
+    if piece_order!=old_piece_order
+      piece_order.each_with_index do |id,i|
+        Piece.find(id).update_attributes(:number=>i)
+      end
+    end
+
     saved=@issue.update_attributes(params[:issue])
+    
     if saved
-      puts 'saved'
       redirect_to "/issues/#{@issue.id}"
     else
-      puts 'error'
       redirect_to "/issues/#{@issue.id}/edit"
     end
   end

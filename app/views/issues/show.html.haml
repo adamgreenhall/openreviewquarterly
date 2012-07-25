@@ -82,11 +82,9 @@
     
         var scrollTop = $(this).scrollTop();
         var checkIndex = getCurrent( scrollTop );
-        console.log(checkIndex,currentIndex)
         if (currentIndex==undefined){ toPiecelink.attr('style','visibility:hidden'); }
         if( checkIndex !== currentIndex ) {
             currentIndex = checkIndex;
-            console.log('change',currentIndex,toPiecelink)
             if (checkIndex==undefined){ toPiecelink.attr('style','visibility:hidden') }
             else {
                 toPiecelink.attr({

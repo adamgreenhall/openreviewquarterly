@@ -10,7 +10,10 @@
   =f.label :description
   =f.input_field :description
   =f.label :prompt
-  =f.text_area :prompt, :size => '80x20',:style=>'width: 60em'
+  =f.text_area :prompt, :size => '80x10',:style=>'width: 40em'
+  
+  -if issue.pieces
+    =f.hidden_field :piece_order, :value => issue.pieces.map{|p| p.id}.to_json
   
   = f.input :is_published, 
           :as => :radio_buttons, 
