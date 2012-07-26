@@ -33,19 +33,8 @@ $noborder: 0px
 @mixin link-color($linkcolor, $hover: false, $active: false, $visited: false, $focus: false)
     a
         +link-colors($linkcolor, $hover, $active, $visited, $focus)
-
-@mixin horizontal-center($width)
-    width: $width
-    margin-left: auto
-    margin-right: auto
-    text-align: center    
-
-@mixin announcestyle
-    color: lightgray
-    text-align: center
-    display: block
-    margin-bottom: 30px
-    letter-spacing: 0.4em
-    // padding-left: 0.5em
-    +horizontal-center( $content-min-width )
-    @include uppercase
+        
+@mixin rounded
+    border-radius: 6px
+    -webkit-border-radius: 6px
+    -moz-border-radius: 6px

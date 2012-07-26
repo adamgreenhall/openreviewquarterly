@@ -1,16 +1,17 @@
 @import "mixins"
 .issueannounce
-  +announcestyle
-
+  color: lightgray
+  text-align: center
+  margin-bottom: 30px
+  letter-spacing: 0.4em
+  +uppercase  
+  
 .issueheader
+  padding-top: 10px
   margin-bottom: 60px
   .current
     .issuetitle
       font-size: 320%
-
-  padding-top: 10px
-  .issueannounce
-    display: none
   .issuetitle
     +alicefont
     font-size: 240%
@@ -30,7 +31,6 @@
   .issuedescription
     text-align: center
     padding: 10px
-    margin: 0px 5em
     line-height: 120%
     border-top: 1px solid $ghost-gray
     border-bottom: 1px solid $ghost-gray
@@ -51,17 +51,17 @@
   .toc_head //Contents
     //color: lightgray
     font-size: 160%
-    @include alicefont
+    +alicefont
     margin-bottom: 1.4ex 
   .tocpieces
     text-align: left
     padding-left: 1.5em
-    margin-left: 1.0em
+    // margin-left: 1.0em
     border-left: 10px solid $tocbarcolor
     .tocpiece
       line-height: 110%
       margin-bottom: 0.6em
-      @include no-link-underline
+      +no-link-underline
       .title
         font-size: 110%
         margin-bottom: 0.4ex  

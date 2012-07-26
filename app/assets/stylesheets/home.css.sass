@@ -14,6 +14,8 @@ $serifFontFamily: Palatino, Georgia, serif
 @import "mixins"
 @import url("http://fonts.googleapis.com/css?family=Lora|Alice|IM+Fell+French+Canon+SC|Gentium+Basic:400,400italic")
 
+// html
+//   width: 100%
 body
   font-family: Palatino, Georgia, serif
   font-size: 20px
@@ -50,6 +52,9 @@ h2
     padding-left: 20px
     +alicefont
     font-size: 14pt
+    @media (max-width: 464px)
+      font-size: 12pt !important
+      padding-left: 5px
 
 .pagefooter
   text-align: center
