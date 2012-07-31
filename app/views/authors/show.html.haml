@@ -1,12 +1,12 @@
 -@bodyid='author_page'
 .row
-  #biopage.span8.offset2
+  #biopage.span6.offset3
     %span.name=@author.name
     %span.desc=raw(@author.biography)
     .pic=author_photo(@author)
 
-.row.span8.offset2
-  #tableofcontents
+.row
+  #tableofcontents.span6.offset3
     .toc_head Pieces
     .tocpieces
       -@pieces.each do |piece|
