@@ -39,13 +39,13 @@ class PiecesController < ApplicationController
   end
   
   def destroy
-    if Piece.find(params[:id]).delete
-      redirect_to :back
-    else
-      redirect_to '/'
-    end
+    Piece.find(params[:id]).delete
     respond_to do |format|
-      format.js
+      format.html { redirect_to '/' }
+      format.js do
+        render :nothing => true, :status => :ok
+        return true
+      end
     end
   end
   

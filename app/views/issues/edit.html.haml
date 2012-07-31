@@ -10,22 +10,23 @@
           %li.piece_order_elem.ui-state-default{:id=>piece.id} 
             %span.number #{i+1}
             %span.name : #{piece.title} - #{piece.author.name}
-            %span.delete_piece{:piece_id=>piece.id,:style=>'float: right'}=link_to '(x)','#'
 
 %section
   %h2=link_to 'New piece','/pieces/new'
   %h2 Edit pieces
   %table
     -@pieces.each do |piece|
-      %tr
+      %tr{:class=>piece.id}
         %td{:style=>'padding: 3px 10px'}=link_to piece.nice_name,"/pieces/#{piece.id}/edit"
         %td=piece.author.name
+        %td.delete_piece{:piece_id=>piece.id,:style=>'padding-left: 5px'}=link_to '(x)','#'
   %h2 Edit illustrations
   %table
     -@illustrations.each do |piece|
-      %tr
+      %tr{:class=>piece.id}
         %td{:style=>'padding: 3px 10px'}=link_to piece.nice_name,"/pieces/#{piece.id}/edit"
         %td=piece.author.name
+        %td.delete_piece{:piece_id=>piece.id,:style=>'padding-left: 5px'}=link_to '(x)','#'
 
 :javascript
   $(document).ready(function(){
@@ -34,12 +35,15 @@
       var check = confirm('You do want to delete this piece?');
       if (check){
         var id = piece_id=$(this).attr('piece_id');
+        
         $.ajax({
           url: '/pieces/'+String(id),
           type: 'DELETE',
           success: function(result) {
             console.log('deleted piece',id);
-            $('li.'+String(id),'#piece_order').remove();
+            $('tr.'+String(id)).remove();
+            $('li#'+String(id)).remove();
+            
           },
           headers: {
             'X-CSRF-Token': "#{form_authenticity_token.to_s}"
