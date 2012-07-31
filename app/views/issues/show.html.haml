@@ -8,14 +8,14 @@
     To publish go to the
     =link_to 'issue edit page.',"/issues/#{@issue.id}/edit"
 
-.row.span8.offset2
+.row.span4.offset4
   .issueheader 
     .issuetitle=link_to_issue(@issue)
     .issueseason=@issue.season
     .issuedescription=@issue.description
 
 .row            
-  #tableofcontents.span8.offset2
+  #tableofcontents.span6.offset3
     .toc_head Contents
     .tocpieces
       - @pieces.each do |piece|
@@ -46,13 +46,6 @@
     }
     
    //if not an iphone
-
-    function filterPath(string) {
-      return string
-        .replace(/^\//,'')
-        .replace(/(index|default).[a-zA-Z]{3,4}$/,'')
-        .replace(/\/$/,'');
-    }
   
     var sections = $(".pieceheader");  // all content sections
     var toPiecelink = $('#to-piece-link');  
@@ -61,7 +54,6 @@
     var topsArray = sections.map(function() { return $(this).position().top - 300; }).get();
     var currentIndex=0;                              
   
-    var locationPath = filterPath(location.pathname);
     var padding = -20;
     var speed = 1000;
 
