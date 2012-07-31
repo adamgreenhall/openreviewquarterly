@@ -20,7 +20,7 @@ class AuthorsController < ApplicationController
   def create
     saved=Author.new(params[:author]).save()
     if saved
-      redirect_to '/authors/all'
+      redirect_to '/people'
     else #form had errors
       render :acion=>'new'
     end

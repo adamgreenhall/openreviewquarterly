@@ -8,6 +8,7 @@
     =javascript_include_tag 'application.js'    
     =analytics_init if Rails.env.production?    
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    = csrf_meta_tags
 %body{:id=>@bodyid}
   .navbar
     .navbar-inner

@@ -22,7 +22,7 @@ class PiecesController < ApplicationController
   def create
     saved=Piece.new(params[:piece]).save()
     if saved
-      redirect_to '/pieces/all'
+      redirect_to :controller=>'issues', :action => 'show', :id=>params[:piece][:issue_id]
     else #form had errors
       render :acion=>'new'
     end
@@ -39,7 +39,14 @@ class PiecesController < ApplicationController
   end
   
   def destroy
-    Piece.find(params[:id]).delete
+    if Piece.find(params[:id]).delete
+      redirect_to :back
+    else
+      redirect_to '/'
+    end
+    respond_to do |format|
+      format.js
+    end
   end
   
   def all
