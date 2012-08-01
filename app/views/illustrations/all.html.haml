@@ -1,0 +1,14 @@
+%table
+  %tr
+    %th Title
+    %th Author
+    %th Piece
+    %th Issue
+  %tbody
+    -@illustrations.each do |ill|
+      %tr
+        %td=ill.title
+        %td=ill.author.name
+        %td=ill.piece.title
+        %td=ill.issue.title  
+

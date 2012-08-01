@@ -21,7 +21,7 @@ class IssuesController < ApplicationController
   def edit
     @issue=Issue.find(params[:id])
     @pieces=@issue.pieces.where("number IS NOT NULL").order(:number)
-    @illustrations=@issue.pieces.where(:kind=>"illustration")
+    @illustrations=@issue.illustrations
   end
 
   def create

@@ -1,12 +1,11 @@
 rails generate model issue title:string number:integer season:string is_published:boolean description:string
-rails generate model piece title:string number:integer author_id:integer issue_id:integer kind:string
-rails generate model author first_name:string last_name:string
-#forgot some stuff
-rails generate migration AddBioToAuthor biography:string
-rails generate migration AddContentToPiece content:string
+rails generate model piece title:string number:integer author_id:integer issue_id:integer kind:string content:string
+rails generate model author first_name:string last_name:string biography:string
+rails g model illustration piece:references author:references issue:references title:string
 
 #add some belongs_to has_many associations to the model class defs
 rake db:create
+
 
 
 
@@ -24,9 +23,6 @@ rails console
     Issue.new(:title=>'Cities',:number=>6,:description=>'',:is_published=>false,:season=>'Summer 2012').save()
     
 
-for each author:
-    Author.new(:first_name=>'',:last_name=>'', :biography=>'').save()
+Piece.where(:kind=>'illustration').destroy_all
 
-for each piece in issue:
-    iid = Issue.where(:number=>1)[0].id
-    Piece.new(:number=>1, :title=>'', :kind=>'', :content=>'',:issue_id=>iid, :author_id=>aid).save()
+[#<Piece id: 8, title: "You Will Not Have Me", number: nil, author_id: 15, issue_id: 6, kind: "illustration", created_at: "2012-07-17 02:56:07", updated_at: "2012-08-01 04:37:25", content: "<img src='/assets/illustrations/habit/you-will-not-...">, #<Piece id: 9, title: "A Love Story", number: nil, author_id: 29, issue_id: 6, kind: "illustration", created_at: "2012-07-17 02:56:07", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/a-love-story-kristen-mitte...">, #<Piece id: 10, title: "Progress Algorithm", number: nil, author_id: 23, issue_id: 6, kind: "illustration", created_at: "2012-07-17 02:56:07", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/progress-algorithm-eric-eh...">, #<Piece id: 19, title: "Inheritance", number: nil, author_id: 15, issue_id: 5, kind: "illustration", created_at: "2012-07-17 03:08:27", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/inheritance-amelia-spinney...">, #<Piece id: 33, title: "Why Do We Return?", number: nil, author_id: 37, issue_id: 4, kind: "illustration", created_at: "2012-07-17 03:11:36", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/why-do-we-return-sarah-ste...">, #<Piece id: 34, title: "No Escape Starring Ray Liotta", number: nil, author_id: 23, issue_id: 4, kind: "illustration", created_at: "2012-07-17 03:11:36", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/no-escape-starring-ray-lio...">, #<Piece id: 50, title: "portrait of a heavy sinking feeling in your gut tha...", number: nil, author_id: 13, issue_id: 3, kind: "illustration", created_at: "2012-07-17 03:22:09", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/portrait-of-a-heavy-sinkin...">, #<Piece id: 51, title: "Zot's Small Corner of the World", number: nil, author_id: 29, issue_id: 3, kind: "illustration", created_at: "2012-07-17 03:22:09", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/zots-small-corner-of-the-w...">, #<Piece id: 52, title: "An Empty Lot", number: nil, author_id: 14, issue_id: 3, kind: "illustration", created_at: "2012-07-17 03:22:09", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/an-empty-lot-amanda-heinbo...">, #<Piece id: 53, title: "Winter Biking Blues", number: nil, author_id: 38, issue_id: 3, kind: "illustration", created_at: "2012-07-17 03:22:09", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/winter-biking-blues-shanno...">, #<Piece id: 68, title: "The Flood", number: nil, author_id: 31, issue_id: 2, kind: "illustration", created_at: "2012-07-17 03:27:47", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/the-flood-mark-hosford.jpg...">, #<Piece id: 69, title: "Bicycle Riding and My Parents", number: nil, author_id: 14, issue_id: 2, kind: "illustration", created_at: "2012-07-17 03:27:47", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/bicycle-riding-and-my-pare...">, #<Piece id: 70, title: "When You Need It Most", number: nil, author_id: 38, issue_id: 2, kind: "illustration", created_at: "2012-07-17 03:27:47", updated_at: "2012-08-01 04:37:25", content: "<img src='/illustrations/when-you-need-it-most-shan...">]

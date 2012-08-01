@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723163848) do
+ActiveRecord::Schema.define(:version => 20120801051259) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -37,6 +37,19 @@ ActiveRecord::Schema.define(:version => 20120723163848) do
     t.datetime "updated_at", :null => false
     t.string   "biography"
   end
+
+  create_table "illustrations", :force => true do |t|
+    t.integer  "piece_id"
+    t.integer  "author_id"
+    t.integer  "issue_id"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "illustrations", ["author_id"], :name => "index_illustrations_on_author_id"
+  add_index "illustrations", ["issue_id"], :name => "index_illustrations_on_issue_id"
+  add_index "illustrations", ["piece_id"], :name => "index_illustrations_on_piece_id"
 
   create_table "issues", :force => true do |t|
     t.string   "title"

@@ -3,17 +3,17 @@ class Piece < ActiveRecord::Base
   validates_presence_of :title, :author_id
   belongs_to :issue
   belongs_to :author
+  has_many :illustrations
   def is_published
     self.issue.is_published
   end
   def nice_name
-    title=(self.title.nil? || self.title=='') ? 'Untitled' : self.title
-    (self.kind=='illustration') ?  'Ilustration for '+title : title
+    (self.title.nil? || self.title=='') ? 'Untitled' : self.title
   end
   
   def url
     title=(self.title.nil? || self.title=='') ? "untitled #{self.author.name}" : self.title
-    URLify.urlify( ((self.kind=='illustration') ? 'illustration ' : '') + title, '-')
+    URLify.urlify(title, '-')
   end
   
   def author_select(incoming_id_from_form)

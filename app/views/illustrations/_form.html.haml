@@ -1,0 +1,11 @@
+= simple_form_for(illustration,:url => { :action => action }) do |f|
+  - illustration.errors.full_messages.each do |msg|
+    %p=msg
+  =f.label :title
+  =f.input_field :title
+  =f.association :author
+  =link_to '(new author)','/authors/new'
+  =f.association :piece
+  =f.association :issue
+  
+  =f.button :submit

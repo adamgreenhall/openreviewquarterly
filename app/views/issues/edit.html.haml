@@ -19,14 +19,16 @@
       %tr{:class=>piece.id}
         %td{:style=>'padding: 3px 10px'}=link_to piece.nice_name,"/pieces/#{piece.id}/edit"
         %td=piece.author.name
-        %td.delete_piece{:piece_id=>piece.id,:style=>'padding-left: 5px'}=link_to '(x)','#'
+        %td.delete_piece{:piece_id=>piece.id,:style=>'padding-left: 5px', :kind=>'pieces'}=link_to '(x)','#'
+
+  %h2=link_to 'New illustration','/illustrations/new'
   %h2 Edit illustrations
   %table
     -@illustrations.each do |piece|
       %tr{:class=>piece.id}
         %td{:style=>'padding: 3px 10px'}=link_to piece.nice_name,"/pieces/#{piece.id}/edit"
         %td=piece.author.name
-        %td.delete_piece{:piece_id=>piece.id,:style=>'padding-left: 5px'}=link_to '(x)','#'
+        %td.delete_piece{:piece_id=>piece.id,:style=>'padding-left: 5px', :kind=>'illustrations'}=link_to '(x)','#'
 
 :javascript
   $(document).ready(function(){
@@ -37,7 +39,7 @@
         var id = piece_id=$(this).attr('piece_id');
         
         $.ajax({
-          url: '/pieces/'+String(id),
+          url: "/"+$(this).attr('kind')+"/"+String(id),
           type: 'DELETE',
           success: function(result) {
             console.log('deleted piece',id);
