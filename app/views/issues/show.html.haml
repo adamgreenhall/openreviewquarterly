@@ -5,6 +5,7 @@
     %button.close{"data-dismiss" => "alert"} ×
     %strong Warning!
     This issue isn't published yet and can only be seen by admins.
+    %br
     To publish go to the
     =link_to 'issue edit page.',"/issues/#{@issue.id}/edit"
 
@@ -26,12 +27,12 @@
 .pieces{:id=>@issue.url}
   - @pieces.each do |piece|
     .row{:class=>piece.kind}
-      .pieceheader.span6.offset3{:id=>urlify(piece.title)}
+      .pieceheader.span6.offset3{:id=>piece.url}
         .title=link_to_piece(piece,false)
         .author=link_to_author(piece.author)
         .pieceheaderbar
-      .row
-        .piececontents.hyphenate.span6.offset3{:lang=>'en'}=raw(piece.content)
+      .row{:class=>piece.kind}
+        .piececontents.hyphenate.span8.offset2{:lang=>'en'}=raw(piece.content)
 
 .row.hidden-phone 
   #issue-footer.span1.offset11

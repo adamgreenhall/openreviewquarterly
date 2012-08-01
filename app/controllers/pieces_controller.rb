@@ -7,6 +7,9 @@ class PiecesController < ApplicationController
     else
       @piece=Piece.find(params[:id])
     end
+    if !@piece.is_published && !admin_signed_in?
+      redirect_to '/'
+    end    
   end
 
   def new

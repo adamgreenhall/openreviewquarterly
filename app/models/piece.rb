@@ -12,7 +12,7 @@ class Piece < ActiveRecord::Base
   end
   
   def url
-    title=(self.title.nil? || self.title=='') ? 'Untitled' : self.title
+    title=(self.title.nil? || self.title=='') ? "untitled #{self.author.name}" : self.title
     URLify.urlify( ((self.kind=='illustration') ? 'illustration ' : '') + title, '-')
   end
   

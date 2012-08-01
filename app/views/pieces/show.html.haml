@@ -1,10 +1,22 @@
 -@title=@piece.title
 
-.row
-  .piece.span6.offset3
-    .pieceheader
+-if not @piece.is_published
+  .alert
+    %button.close{"data-dismiss" => "alert"} ×
+    %strong Warning!
+    This piece is in an issue that isn't published yet and can only be seen by admins.
+    %br
+    To publish go to the
+    =link_to 'issue edit page.',"/issues/#{@piece.issue_id}/edit"
+
+
+
+.row.piece{:class=>@piece.kind}
+  .row.pieceheader
+    .span6.offset3
       .title.donthyphenate=@piece.nice_name
       .author=link_to_author(@piece.author)
       .issue=link_to_issue(@piece.issue)
       .pieceheaderbar
-    .piececontents.hyphens=raw(@piece.content)
+  .row{:class=>@piece.kind}
+    .piececontents.hyphenate.span8.offset2{:lang=>'en'}=raw(@piece.content)
