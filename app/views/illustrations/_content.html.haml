@@ -1,5 +1,6 @@
 %illustration
   =image_tag @illustration.url
-  .title=@illustration.title.blank? ? '' : @illustration.title
-  .author=link_to_author @illustration.author
+  .title_author
+    %span.title=@illustration.title.blank? ? '' : @illustration.title+' - '
+    %span.author=link_to_author @illustration.author
   

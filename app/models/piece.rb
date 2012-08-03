@@ -20,13 +20,13 @@ class Piece < ActiveRecord::Base
     self.author = Author.find(incoming_id_from_form)
   end
   
-  def add_illustration_content(illustration_content)
-    debugger
+  def add_illustration_content(illustration)
+    illustration_content = IllustrationsContentController.new.content({:@illustration=>illustration})
     content = self.content
-    if content.count('<illustration>') == 1
-      before,ill_tag = *content.split('<illustration>')
-      ill_tag,after = *ill_tag.split('<illustration/>')
-      self.content = before + illustration_content + after
+    if content.scan('<illustration>').length == 1
+      before,_ = *content.split('<illustration>')
+      _,after = *content.split('</illustration>')
+      self.content = (before.nil? ? '' : before) + illustration_content + (after.nil? ? '' : after)
       self.save()
     else
       self.content+=illustration_content

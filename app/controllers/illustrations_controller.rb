@@ -12,13 +12,8 @@ class IllustrationsController < ApplicationController
   def create
     illustration=Illustration.new(params[:illustration])
     saved = illustration.save()
-    if saved
-      
-      piece = Piece.find(illustration.piece.id)
-      
-      content = render :partial => 'content', :locals =>{:@illustration=>illustration}
-      piece.add_illustration_content(content)
-      
+    if saved      
+      illustration.piece.add_illustration_content(illustration)
       redirect_to :controller=>'issues', :action => 'show', :id=>params[:illustration][:issue_id]
     else #form had errors
       redirect_to :acion=>'new'
@@ -31,6 +26,15 @@ class IllustrationsController < ApplicationController
     @authors=Author.all    
   end
   def update
+    illustration=Illustration.find(params[:id])
+    saved=illustration.update_attributes(params[:illustration])
+    if saved
+      illustration.piece.add_illustration_content(illustration)
+      redirect_to "/pieces/#{illustration.piece.id}"
+    else
+      redirect_to "/illustrations/#{illustration.id}/edit"
+    end
+    
   end
 
   def destroy
