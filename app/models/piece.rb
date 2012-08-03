@@ -19,5 +19,19 @@ class Piece < ActiveRecord::Base
   def author_select(incoming_id_from_form)
     self.author = Author.find(incoming_id_from_form)
   end
+  
+  def add_illustration_content(illustration_content)
+    debugger
+    content = self.content
+    if content.count('<illustration>') == 1
+      before,ill_tag = *content.split('<illustration>')
+      ill_tag,after = *ill_tag.split('<illustration/>')
+      self.content = before + illustration_content + after
+      self.save()
+    else
+      self.content+=illustration_content
+      self.save()
+    end
+  end
 
 end

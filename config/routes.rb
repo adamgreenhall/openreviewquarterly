@@ -35,6 +35,7 @@ Orq::Application.routes.draw do
   post 'pieces/:id' => 'pieces#create', :as => :pieces
   delete 'pieces/:id' => 'pieces#destroy', :as => :pieces
 
+  get 'illustrations/:id' => 'illustrations#show', :as => :illustrations
   put 'illustrations/:id' => 'illustrations#update', :as => :illustrations
   post 'illustrations/:id' => 'illustrations#create', :as => :illustrations
   delete 'illustrations/:id' => 'illustrations#destroy', :as => :illustrations

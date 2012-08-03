@@ -1,6 +1,7 @@
 class IllustrationsController < ApplicationController
   before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:update,:all]
   def show
+    @illustration=Illustration.find(params[:id])
   end
 
   def new
@@ -9,8 +10,15 @@ class IllustrationsController < ApplicationController
     @authors=Author.all
   end
   def create
-    saved=Illustration.new(params[:illustration]).save()
+    illustration=Illustration.new(params[:illustration])
+    saved = illustration.save()
     if saved
+      
+      piece = Piece.find(illustration.piece.id)
+      
+      content = render :partial => 'content', :locals =>{:@illustration=>illustration}
+      piece.add_illustration_content(content)
+      
       redirect_to :controller=>'issues', :action => 'show', :id=>params[:illustration][:issue_id]
     else #form had errors
       redirect_to :acion=>'new'
@@ -18,6 +26,9 @@ class IllustrationsController < ApplicationController
   end
 
   def edit
+    @illustration=Illustration.find(params[:id])
+    @pieces=Piece.all
+    @authors=Author.all    
   end
   def update
   end
