@@ -1,11 +1,11 @@
 .row
-  .issueannounce.span6.offset3
+  .issueannounce.span8.offset2
     %p Current Issue
     .issueheader
       .issuetitle=issue_link(@current_issue) #.title,urlify(@current_issue.title)
       .issueseason=@current_issue.season
-      .row
-        .issuedescription.donthyphenate.span4.offset1=@current_issue.description
+  .issuedescription.span6.offset3
+    %p=@current_issue.description
 
 .row    
   .issueannounce.span6.offset3

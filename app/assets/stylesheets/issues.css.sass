@@ -1,8 +1,12 @@
 @import "mixins"
+
+// debug
+// .span6, .span8, .row
+//   border: 1px solid black
+
 .issueannounce
   color: lightgray
   text-align: center
-  margin-bottom: 30px
   letter-spacing: 0.4em
   +uppercase  
   
@@ -28,16 +32,17 @@
     text-align: center
     color: $ghost-gray
     margin-bottom: 1.5em
-  .issuedescription
-    text-align: center
-    padding: 10px
-    line-height: 120%
-    border-top: 1px solid $ghost-gray
-    border-bottom: 1px solid $ghost-gray
-    margin-bottom: 60px
-    font-size: 80%
-    font-family: "Gentium Basic", serif
-    font-style: italic  
+    
+.issuedescription
+  text-align: center
+  padding: 10px 0px 
+  line-height: 120%
+  border-top: 1px solid $ghost-gray
+  border-bottom: 1px solid $ghost-gray
+  margin-bottom: 60px
+  font-size: 80%
+  font-family: "Gentium Basic", serif
+  font-style: italic  
 
 .olderissues
   .issuetitle
@@ -47,6 +52,7 @@
     margin: 0px 5em
     
 #tableofcontents
+  margin-top: 5ex
   margin-bottom: 10ex
   .toc_head //Contents
     //color: lightgray

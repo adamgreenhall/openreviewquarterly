@@ -5,6 +5,6 @@
   =f.input_field :title
   =f.association :author, :collection => authors
   =link_to '(new author)','/authors/new'
-  =f.association :piece, :collection => pieces,  :label_method => lambda { |p| "#{p.issue.number}: #{p.nice_name}" }
+  =f.association :piece, :collection => pieces,  :label_method => lambda { |p| "#{p.nice_name} (iss. #{p.issue.number})" }
   
   =f.button :submit
