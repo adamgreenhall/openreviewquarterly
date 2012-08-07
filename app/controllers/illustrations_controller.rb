@@ -6,15 +6,16 @@ class IllustrationsController < ApplicationController
 
   def new
     @illustration=Illustration.new
-    @pieces=Piece.all
-    @authors=Author.all
+    @pieces=Piece.find(:all, :order => "issue_id, title")
+    @authors=Author.find(:all, :order => "last_name, first_name")
   end
   def create
+    params[:illustration][:issue_id] = Piece.find(params[:illustration][:piece_id]).issue.id
     illustration=Illustration.new(params[:illustration])
     saved = illustration.save()
     if saved      
       illustration.piece.add_illustration_content(illustration)
-      redirect_to :controller=>'issues', :action => 'show', :id=>params[:illustration][:issue_id]
+      redirect_to :controller=>'pieces', :action => 'show', :id=>illustration.piece.id
     else #form had errors
       redirect_to :acion=>'new'
     end
@@ -27,6 +28,7 @@ class IllustrationsController < ApplicationController
   end
   def update
     illustration=Illustration.find(params[:id])
+    params[:illustration][:issue_id] = Piece.find(params[:illustration][:piece_id]).issue.id
     saved=illustration.update_attributes(params[:illustration])
     if saved
       illustration.piece.add_illustration_content(illustration)

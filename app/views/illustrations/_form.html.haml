@@ -3,9 +3,8 @@
     %p=msg
   =f.label :title
   =f.input_field :title
-  =f.association :author
+  =f.association :author, :collection => authors
   =link_to '(new author)','/authors/new'
-  =f.association :piece
-  =f.association :issue
+  =f.association :piece, :collection => pieces,  :label_method => lambda { |p| "#{p.issue.number}: #{p.nice_name}" }
   
   =f.button :submit
