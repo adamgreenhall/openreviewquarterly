@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120801051259) do
+ActiveRecord::Schema.define(:version => 20120808031408) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20120801051259) do
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "width"
   end
 
   add_index "illustrations", ["author_id"], :name => "index_illustrations_on_author_id"
@@ -68,9 +69,9 @@ ActiveRecord::Schema.define(:version => 20120801051259) do
     t.integer  "author_id"
     t.integer  "issue_id"
     t.string   "kind"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "content"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.text     "content",    :limit => 255
   end
 
 end

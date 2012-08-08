@@ -27,6 +27,7 @@ group :assets do
   gem 'jquery-ui-rails'
   gem 'jquery-rails'
   gem 'modernizr-rails'
+  gem 'compass-rails'
 end
 
 gem 'bootstrap-sass'
