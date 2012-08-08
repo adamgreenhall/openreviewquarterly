@@ -1,7 +1,7 @@
 -@title='ORQ Contributors'
 -@bodyid='authors_list'
 #all_authors
-  - @authors.enum_slice(3).to_a.each do |row|
+  - @authors.each_slice(3).to_a.each do |row|
     .row
       -row.each do |author|
         .contributor.span3

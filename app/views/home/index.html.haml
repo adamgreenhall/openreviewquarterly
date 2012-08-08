@@ -12,7 +12,7 @@
     %p Past Issues
 
 .olderissues
-  -@back_issues.enum_slice(2).to_a.each do |issue_row|
+  -@back_issues.each_slice(2).to_a.each do |issue_row|
     .row
       -issue_row.each.each_with_index do |issue,i|
         .issueheader.span4{:class=>i==0 ? 'offset2' : ''}
