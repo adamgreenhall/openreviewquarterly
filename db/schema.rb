@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808031408) do
+ActiveRecord::Schema.define(:version => 20120808032723) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -69,9 +69,9 @@ ActiveRecord::Schema.define(:version => 20120808031408) do
     t.integer  "author_id"
     t.integer  "issue_id"
     t.string   "kind"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.text     "content",    :limit => 255
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.text     "content"
   end
 
 end
