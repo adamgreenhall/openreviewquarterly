@@ -5,5 +5,5 @@ Currently the site is built with:
 * [Rails3](http://rubyonrails.org/)
 * [Bootstrap](http://twitter.github.com/bootstrap/)
 * [hyphenator.js](http://code.google.com/p/hyphenator/)
-* [Heroku](heroku.com)
+* [Heroku](http://heroku.com)
 * Lots of help from our friends.
