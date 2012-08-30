@@ -42,7 +42,11 @@ class AuthorsController < ApplicationController
   end
     
   def all
-    @authors=Author.all
+    # put the publishers on the top
+    @authors=Author.publishers
+    @authors.concat(
+      Author.select("last_name, first_name").find(:all, :conditions => ['id not in (?)', @authors.map(&:id)], :order=>'last_name')
+    )
   end
   
 end
