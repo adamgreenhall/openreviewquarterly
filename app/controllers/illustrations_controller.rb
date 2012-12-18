@@ -10,6 +10,7 @@ class IllustrationsController < ApplicationController
     @authors=Author.find(:all, :order => "last_name, first_name")
   end
   def create
+    # TODO - allow uploading
     params[:illustration][:issue_id] = Piece.find(params[:illustration][:piece_id]).issue.id
     illustration=Illustration.new(params[:illustration])
     saved = illustration.save()
