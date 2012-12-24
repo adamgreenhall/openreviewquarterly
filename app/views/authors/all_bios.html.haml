@@ -1,0 +1,10 @@
+-@title = 'ORQ Contributors'
+-@bodyid = 'all-bios'
+- @authors.each do |author|
+  -if author
+    .row.contributor
+      .pic.span1.offset3=author_photo(author)
+      .bio.span5
+        %span.name{:style=>'font-weight: bold'}=author.name
+        %span.desc=raw(author.biography.blank? ? '' : author.biography)
+      

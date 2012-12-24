@@ -16,6 +16,7 @@ Orq::Application.routes.draw do
   root :to => 'home#index'
   get "about" => 'home#about'
   get "people" => 'authors#all'
+  get "people/bios" => 'authors#all_bios'
   get "submit" => 'home#submit'
   get "admin" => 'admin#index'
 

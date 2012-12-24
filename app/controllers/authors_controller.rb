@@ -49,4 +49,11 @@ class AuthorsController < ApplicationController
     )
   end
   
+  def all_bios
+    @authors=Author.publishers
+    @authors.concat(
+      Author.select("last_name, first_name, biography").find(:all, :conditions => ['id not in (?)', @authors.map(&:id)], :order=>'last_name')
+    )
+  end
+  
 end
