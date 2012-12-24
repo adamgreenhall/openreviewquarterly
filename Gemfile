@@ -7,7 +7,7 @@ group :development, :test do
   gem "sqlite3"
   # gem 'guard-livereload'
   # gem 'rack-livereload'
-  gem 'ruby-debug'
+  gem 'debugger'
 end
 group :production do
   gem "pg"
