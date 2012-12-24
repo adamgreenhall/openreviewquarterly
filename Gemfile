@@ -8,6 +8,7 @@ group :development, :test do
   # gem 'guard-livereload'
   # gem 'rack-livereload'
   gem 'debugger'
+  gem 'quiet_assets'
 end
 group :production do
   gem "pg"

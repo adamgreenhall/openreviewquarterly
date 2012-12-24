@@ -1,6 +1,7 @@
 -@title=@issue.title
+-@hide_admin_banner ||= false
 
--if not @issue.is_published
+-if (not @issue.is_published) && (not @hide_admin_banner)
   .alert
     %button.close{"data-dismiss" => "alert"} ×
     %strong Warning!

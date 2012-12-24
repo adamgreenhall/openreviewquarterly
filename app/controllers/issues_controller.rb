@@ -8,14 +8,22 @@ class IssuesController < ApplicationController
     else
       @issue=Issue.find(params[:id])
     end
-    @pieces=@issue.pieces.where("number IS NOT NULL").order(:number)
+    @pieces = @issue.pieces.where("number IS NOT NULL").order(:number)
     if !@issue.is_published && !admin_signed_in?
       redirect_to '/'
     end
   end
 
+  def secret_preview
+    @issue = Issue.where(is_published: false).first
+    puts @issue
+    @pieces = @issue.pieces.where("number IS NOT NULL").order(:number)
+    @hide_admin_banner = true
+    render :template => "issues/show"
+  end
+
   def new
-    @issue=Issue.new()
+    @issue=Issue.new(published: false)
   end
 
   def edit

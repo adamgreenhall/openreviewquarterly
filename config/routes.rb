@@ -48,7 +48,7 @@ Orq::Application.routes.draw do
   delete "authors/:id" => 'authors#destroy', :as => :authors
   delete "issues/:id" => 'issues#destroy', :as => :issues
   
-  
+  get 'reviewer-secret-preview' => 'issues#secret_preview'  
   get ':issue_title'=>'issues#show', :as => :issues
   get "people/:author_name" => 'authors#show', :as => :authors
   get ":issue_title/:piece_title" => 'pieces#show', :as => :pieces
@@ -58,7 +58,6 @@ Orq::Application.routes.draw do
   resources :authors
   resources :pieces
   resources :illustrations
-  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
