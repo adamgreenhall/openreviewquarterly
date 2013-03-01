@@ -1,6 +1,7 @@
 require 'json'
 class IssuesController < ApplicationController
   before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:update,:all]
+  layout :resolve_layout
   def show
     if params[:issue_title]
       @issue=get_issue_from_title(params[:issue_title])
@@ -66,4 +67,14 @@ class IssuesController < ApplicationController
   def all
     @issues=Issue.order(:number).all()
   end  
+  
+  private
+  def resolve_layout
+    case action_name
+    when "new", "create", "edit", "update"
+      "admin"
+    else
+      "application"
+    end
+  end    
 end

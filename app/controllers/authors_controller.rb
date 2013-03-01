@@ -1,5 +1,7 @@
 class AuthorsController < ApplicationController
   before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:update]
+  layout :resolve_layout
+
   def show
     if params[:author_name]
       @author=get_author_from_name(params[:author_name])
@@ -55,5 +57,16 @@ class AuthorsController < ApplicationController
       Author.select("last_name, first_name, biography").find(:all, :conditions => ['id not in (?)', @authors.map(&:id)], :order=>'last_name')
     )
   end
+
+  private
+  def resolve_layout
+    case action_name
+    when "new", "create", "edit", "update"
+      "admin"
+    else
+      "application"
+    end
+  end  
+
   
 end

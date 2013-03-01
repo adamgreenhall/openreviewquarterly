@@ -1,17 +1,5 @@
 -@title='ORQ backend'
 -@bodyid='admin'
-.row
-  .span6
-    %h1 Issues
-    %h3=link_to 'New Issue','/issues/new'
-    %h3 Edit issue:
-    %ol
-      -@issues.each do |issue|
-        %li=link_to issue.title, "/issues/#{issue.id}/edit"
-  .span6
-    %h1 Authors
-    %h3=link_to 'New Author','/authors/new'
-    %h3 Edit author: 
-    %ul
-      -@authors.each do |author|
-        %li=link_to author.name,"/authors/#{author.id}/edit"
+
+%h2=link_to 'Issues', '/admin/issues'
+%h2=link_to 'Authors', '/admin/authors'

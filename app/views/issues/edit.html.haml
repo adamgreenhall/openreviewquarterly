@@ -2,15 +2,15 @@
 -@bodyid='admin'
 %h1 Edit existing issue
 .row
-  .span6=render :partial=>'form',:locals=>{:issue=>@issue,:action=>'update'}
+  .span6
+    =render :partial=>'form',:locals=>{:issue=>@issue,:action=>'update'}
   .span6
     %h2 Piece order
-    .row
-      %ul#piece_order.span5
-        -@pieces.each_with_index do |piece,i|
-          %li.piece_order_elem.ui-state-default{:id=>piece.id} 
-            %span.number #{i+1}
-            %span.name : #{piece.title} - #{piece.author.name}
+    %ul#piece_order
+      -@pieces.each_with_index do |piece,i|
+        %li.piece_order_elem.ui-state-default{:id=>piece.id} 
+          %span.number #{i+1}
+          %span.name : #{piece.title} - #{piece.author.name}
 
 %section
   %h2=link_to 'New piece','/pieces/new'

@@ -10,7 +10,9 @@ Orq::Application.routes.draw do
   get "illustrations/all"
 
   get "admin/index"
-
+  get "admin/issues"
+  get "admin/authors"
+  
   devise_for :admins
 
   root :to => 'home#index'

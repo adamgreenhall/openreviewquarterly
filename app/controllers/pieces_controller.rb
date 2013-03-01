@@ -1,5 +1,6 @@
 class PiecesController < ApplicationController
   before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:update,:all]
+  layout :resolve_layout
   def show
     if params[:issue_title] && params[:piece_title] 
       @piece=get_piece_from_titles(params)
@@ -55,4 +56,14 @@ class PiecesController < ApplicationController
   def all
     @pieces=Piece.all
   end
+  
+  private
+  def resolve_layout
+    case action_name
+    when "new", "create", "edit", "update"
+      "admin"
+    else
+      "application"
+    end
+  end    
 end
