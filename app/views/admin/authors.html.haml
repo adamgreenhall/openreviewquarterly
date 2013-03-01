@@ -1,0 +1,6 @@
+%h1 Authors
+%h3=link_to 'New Author','/authors/new'
+%h3 Edit author: 
+%ul
+  -@authors.each do |author|
+    %li=link_to author.name,"/authors/#{author.id}/edit"

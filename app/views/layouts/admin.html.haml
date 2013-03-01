@@ -1,0 +1,22 @@
+-@bodyid||=''
+-@title||='ORQ Admin'
+!!!
+%html.home{:lang => "en"}
+  %head
+    %title=@title
+    =stylesheet_link_tag 'application.css'    
+    =javascript_include_tag 'application.js'    
+    =analytics_init if Rails.env.production?    
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    = csrf_meta_tags
+%body{:id=>@bodyid}
+  .navbar
+    .navbar-inner
+      .container
+        =link_to 'ORQ Admin','/admin',:class=>'brand'
+        .links
+          %ul.nav
+            %li=link_to 'Issues',"/admin/issues"
+            %li=link_to 'Authors',"/admin/authors"
+  .container
+    =yield
