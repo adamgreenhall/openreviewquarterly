@@ -63,7 +63,9 @@
       var target = this.hash;
       $(this).click(function(event) {
         event.preventDefault();
-        $.scrollTo( $(target), speed, {offset:padding});
+        $.scrollTo( $(target), 
+          {duration: speed, offset: padding}
+        );
       });
     });
     
