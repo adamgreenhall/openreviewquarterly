@@ -11,21 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224181130) do
+ActiveRecord::Schema.define(:version => 20130715191231) do
 
   create_table "admins", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.string    "email",                  :default => "", :null => false
+    t.string    "encrypted_password",     :default => "", :null => false
+    t.string    "reset_password_token"
+    t.timestamp "reset_password_sent_at"
+    t.timestamp "remember_created_at"
+    t.integer   "sign_in_count",          :default => 0
+    t.timestamp "current_sign_in_at"
+    t.timestamp "last_sign_in_at"
+    t.string    "current_sign_in_ip"
+    t.string    "last_sign_in_ip"
+    t.timestamp "created_at",                             :null => false
+    t.timestamp "updated_at",                             :null => false
   end
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
@@ -36,18 +36,18 @@ ActiveRecord::Schema.define(:version => 20121224181130) do
     t.string   "last_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "biography"
+    t.text     "biography"
   end
 
   create_table "illustrations", :force => true do |t|
-    t.integer  "piece_id"
-    t.integer  "author_id"
-    t.integer  "issue_id"
-    t.string   "title"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.string   "width"
-    t.string   "url_external"
+    t.integer   "piece_id"
+    t.integer   "author_id"
+    t.integer   "issue_id"
+    t.string    "title"
+    t.timestamp "created_at",   :null => false
+    t.timestamp "updated_at",   :null => false
+    t.string    "width"
+    t.string    "url_external"
   end
 
   add_index "illustrations", ["author_id"], :name => "index_illustrations_on_author_id"
@@ -55,25 +55,25 @@ ActiveRecord::Schema.define(:version => 20121224181130) do
   add_index "illustrations", ["piece_id"], :name => "index_illustrations_on_piece_id"
 
   create_table "issues", :force => true do |t|
-    t.string   "title"
-    t.integer  "number"
-    t.string   "season"
-    t.boolean  "is_published", :default => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.string   "description"
-    t.text     "prompt"
+    t.string    "title"
+    t.integer   "number"
+    t.string    "season"
+    t.boolean   "is_published", :default => false
+    t.timestamp "created_at",                      :null => false
+    t.timestamp "updated_at",                      :null => false
+    t.string    "description"
+    t.text      "prompt"
   end
 
   create_table "pieces", :force => true do |t|
-    t.string   "title"
-    t.integer  "number"
-    t.integer  "author_id"
-    t.integer  "issue_id"
-    t.string   "kind"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.text     "content"
+    t.string    "title"
+    t.integer   "number"
+    t.integer   "author_id"
+    t.integer   "issue_id"
+    t.string    "kind"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
+    t.text      "content"
   end
 
 end
