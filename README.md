@@ -7,3 +7,5 @@ Currently the site is built with:
 * [hyphenator.js](http://code.google.com/p/hyphenator/)
 * [Heroku](http://heroku.com)
 * Lots of help from our friends.
+
+New issues can be cleaned up from a google docs html downloads folder using ``cd newIssue; python cleanup.py`` 
