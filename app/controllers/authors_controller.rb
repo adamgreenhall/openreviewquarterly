@@ -8,7 +8,9 @@ class AuthorsController < ApplicationController
     else
       @author=Author.find(params[:id])
     end
-    @pieces=@author.pieces.joins(:issue).where({:issues => {:is_published => true}}).sort_by{|p| p.issue.number}.reverse
+    @pieces = @author.pieces.joins(:issue).where({:issues => {:is_published => true}}).sort_by{|p| p.issue.number}.reverse
+    
+    @illustrations = @author.illustrations.joins(:issue).where({:issues => {:is_published => true}}).sort_by{|i| i.issue.number}.reverse
   end
 
   def new

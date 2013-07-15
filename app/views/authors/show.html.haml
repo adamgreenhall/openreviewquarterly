@@ -7,13 +7,21 @@
 
 .row
   #tableofcontents.span6.offset3
-    .toc_head Pieces
-    .tocpieces
-      -@pieces.each do |piece|
-        .piece-toc
-          %span.title #{link_to_piece(piece,true)} - 
-          %span.issue=link_to_issue(piece.issue)
-
-
+    -if @pieces.count > 0
+      .toc_head Pieces
+      .tocpieces
+        -@pieces.each do |piece|
+          .piece-toc
+            %span.title #{link_to_piece(piece,true)} - 
+            %span.issue=link_to_issue(piece.issue)
+            
+    -if @illustrations.count > 0
+      .toc_head Illustrations
+      .tocpieces
+        -@illustrations.each do |illus|
+          .piece-toc
+            %span.title #{link_to_piece(illus.piece,true)} - 
+            %span.issue=link_to_issue(illus.piece.issue)
+            
 
   
