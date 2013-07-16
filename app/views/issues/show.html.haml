@@ -28,7 +28,7 @@
 .pieces{:id=>@issue.url}
   - @pieces.each do |piece|
     .row{:class=>piece.kind}
-      .pieceheader.span6.offset3{:id=>piece.url}
+      .pieceheader.span6.offset3{:id=>piece.slug}
         .title=link_to_piece(piece,false)
         .author=link_to_author(piece.author)
         .pieceheaderbar

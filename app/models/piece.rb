@@ -1,9 +1,11 @@
 class Piece < ActiveRecord::Base
-  attr_accessible :author_id, :issue_id, :number, :title, :kind, :content
-  validates_presence_of :title, :author_id
+  attr_accessible :author_id, :issue_id, :number, :title, :kind, :content, :slug
+  validates_presence_of :author_id
   belongs_to :issue
   belongs_to :author
   has_many :illustrations
+  before_create :set_slug
+  
   def is_published
     self.issue.is_published
   end
@@ -11,7 +13,11 @@ class Piece < ActiveRecord::Base
     (self.title.nil? || self.title=='') ? 'Untitled' : self.title
   end
   
-  def url
+  def set_slug
+    self.slug = self.get_slug()
+  end
+  
+  def get_slug
     title=(self.title.nil? || self.title=='') ? "untitled #{self.author.name}" : self.title
     URLify.urlify(title, '-')
   end

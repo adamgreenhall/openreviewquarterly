@@ -4,17 +4,14 @@ gem 'thin'
 gem 'newrelic_rpm'
 
 group :development, :test do
-  gem "sqlite3"
   # gem 'guard-livereload'
   # gem 'rack-livereload'
   gem 'debugger'
   gem 'quiet_assets'
   gem 'taps'
 end
-group :production do
-  gem "pg"
-end
 
+gem "pg"
 gem 'slim-rails'
 gem 'haml-rails'
 
