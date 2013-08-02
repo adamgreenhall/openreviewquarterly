@@ -13,12 +13,12 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     = csrf_meta_tags
 %body{:id=>@bodyid}
-  .navbar
+  %nav.navbar
     .navbar-inner
       .container
         =link_to 'Open Review Quarterly','/',:class=>'brand'
         .links
-          %ul.nav
+          %ul.nav#sitemap
             %li=link_to 'about',"/about"
             %li=link_to 'blog',"http://orq.tumblr.com/"
             %li=link_to 'people','/people'
