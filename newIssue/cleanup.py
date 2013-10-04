@@ -1,10 +1,14 @@
 import os
 from glob import glob
 from bs4 import BeautifulSoup
+from ipdb import set_trace
+from codecs import open
+
 
 junk_styles = [
     'height:11pt',
     'line-height:1.0',
+    'line-height:1.1500000000000001',
     'color:#000000',
     'color:#222222',
     'margin-bottom:0',
@@ -21,6 +25,7 @@ junk_styles = [
     'font-size:10pt',
     'font-family:"Arial"',
     'font-family:"Calibri"',
+    'font-family:"Cambria"',
     'font-family:"Times New Roman"',
     'font-family:"Segoe UI"',
     'padding:0',
@@ -33,7 +38,8 @@ junk_styles = [
 
 # flatten the directory structure
 for fnm in glob('*/*.html'):
-    os.system('mv "{}" "{}"'.format(fnm, fnm.split('/')[1]))
+    if not 'cleaned/' in fnm:
+        os.system('mv "{}" "{}"'.format(fnm, fnm.split('/')[1]))
 for fnm in glob('*/'):
     os.system('rm -r "{}"'.format(fnm))
     
@@ -66,5 +72,9 @@ for fnm in glob('*.html'):
     for div in body.findAll('div', {'style': 'margin:5px;border:1px solid black'}):
         div.extract()
     
-    with open('cleaned/{}'.format(fnm), 'w+') as f:
-        f.write(''.join([str(tag) for tag in body.contents]))
+    with open('cleaned/{}'.format(fnm), 'w+', encoding='utf-8') as f:
+        out = unicode(
+            ''.join([str(tag) for tag in body.contents]),
+            encoding='utf-8')
+        header = "" #"<meta charset='UTF-8'>"
+        f.write(header+out)
