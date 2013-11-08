@@ -1,7 +1,6 @@
 import os
 from glob import glob
 from bs4 import BeautifulSoup
-from ipdb import set_trace
 from codecs import open
 
 
@@ -20,9 +19,10 @@ junk_styles = [
     'padding-top:0',
     'padding-bottom:0',
     'direction:ltr',
+    'font-size:9pt',
+    'font-size:10pt',
     'font-size:11pt',
     'font-size:12pt',
-    'font-size:10pt',
     'font-family:"Arial"',
     'font-family:"Calibri"',
     'font-family:"Cambria"',
@@ -32,16 +32,13 @@ junk_styles = [
     'margin:0',
     'color:inherit',
     'text-decoration:inherit',
+    'text-indent:36pt',
     'background-color:#ffffff',
     'color:#1155cc;text-decoration:underline', #default link styling
 ]
 
 # flatten the directory structure
-for fnm in glob('*/*.html'):
-    if not 'cleaned/' in fnm:
-        os.system('mv "{}" "{}"'.format(fnm, fnm.split('/')[1]))
-for fnm in glob('*/'):
-    os.system('rm -r "{}"'.format(fnm))
+
     
 # clean each html file
 def attrOK(key, val):
@@ -54,11 +51,12 @@ def tagOK(tag):
 def clean_style(key, val):
     if key != 'style': return val
     for st in junk_styles:
+        val = val.replace(st + ';', '')
         val = val.replace(st, '')
     return val
     
 os.system('mkdir -p cleaned')
-for fnm in glob('*.html'):
+for fnm in glob('*/*/*.html'):
     with open(fnm, 'r') as f: 
         body = BeautifulSoup(f).body
     
@@ -72,9 +70,11 @@ for fnm in glob('*.html'):
     for div in body.findAll('div', {'style': 'margin:5px;border:1px solid black'}):
         div.extract()
     
-    with open('cleaned/{}'.format(fnm), 'w+', encoding='utf-8') as f:
+    with open('cleaned/{}'.format(fnm.split('/')[-1]), 'w+', encoding='utf-8') as f:
         out = unicode(
-            ''.join([str(tag) for tag in body.contents]),
+            ''.join(
+                [str(tag) for tag in body.contents]
+            ).replace(' style=""','').replace('\t', ''),
             encoding='utf-8')
         header = "" #"<meta charset='UTF-8'>"
         f.write(header+out)
