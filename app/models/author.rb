@@ -1,5 +1,5 @@
 class Author < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :biography
+  attr_accessible :first_name, :last_name, :biography, :image_url
   validates_presence_of :first_name, :last_name
   has_many :pieces
   has_many :illustrations
