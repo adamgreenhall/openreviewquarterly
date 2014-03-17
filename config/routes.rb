@@ -13,7 +13,7 @@ Orq::Application.routes.draw do
   get "admin/issues"
   get "admin/authors"
   
-  devise_for :admins
+  devise_for :admins, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   root :to => 'home#index'
   get "about" => 'home#about'
