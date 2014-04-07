@@ -28,7 +28,7 @@ group :assets do
   gem 'modernizr-rails'
 end
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '2.3.2.0'
 gem 'jquery-datatables-rails'
 gem 'csv-mapper'
 gem 'bluecloth'
