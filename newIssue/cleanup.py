@@ -8,6 +8,7 @@ junk_styles = [
     'height:11pt',
     'line-height:1.0',
     'line-height:1.1500000000000001',
+    'line-height:1.428571',
     'color:#000000',
     'color:#222222',
     'margin-bottom:0',
@@ -18,6 +19,7 @@ junk_styles = [
     'padding-right:0',
     'padding-top:0',
     'padding-bottom:0',
+    'padding-bottom:10pt',
     'direction:ltr',
     'font-size:9pt',
     'font-size:10pt',
@@ -39,15 +41,24 @@ junk_styles = [
 
 # flatten the directory structure
 
-    
 # clean each html file
 def attrOK(key, val):
      if key == 'style': return False
      return True
 def tagOK(tag):
-    if tag.name == 'sup' or ('href' in tag.attrs and 'cmnt_ref' in tag.attrs['href']):
+    if tag.name == 'sup' or \
+        ('href' in tag.attrs and 'cmnt_ref' in tag.attrs['href']):
         return False
     return True
+
+def is_comment_ref(tag):
+    return tag.attrs.get('href', '').startswith('#cmnt') and \
+        tag.attrs.get('name', '').startswith('cmnt_ref')
+
+def is_comment_body(tag):
+    return tag.attrs.get('href', '').startswith('#cmnt_ref') and \
+        tag.attrs.get('name', '').startswith('cmnt')
+
 def clean_style(key, val):
     if key != 'style': return val
     for st in junk_styles:
@@ -57,14 +68,19 @@ def clean_style(key, val):
     
 os.system('mkdir -p cleaned')
 for fnm in glob('*/*/*.html'):
+    if fnm.startswith('old'): continue
     with open(fnm, 'r') as f: 
         body = BeautifulSoup(f).body
     
     body.attrs = {}
     for tag in body.findAll(): 
         tag.attrs = {key: clean_style(key, val) for key, val in tag.attrs.iteritems()}
-        if not tagOK(tag):
-            tag.extract()
+        if is_comment_ref(tag):
+            # extract the super tag around the footnote link
+            tag.parent.extract()
+        elif is_comment_body(tag):
+            # extract the paragraph tag around the footnote body
+            tag.parent.extract()
             
     # remove the comments
     for div in body.findAll('div', {'style': 'margin:5px;border:1px solid black'}):
