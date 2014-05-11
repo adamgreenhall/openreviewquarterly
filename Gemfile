@@ -32,6 +32,7 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'jquery-datatables-rails'
 gem 'csv-mapper'
 gem 'bluecloth'
+gem 'haml-contrib'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

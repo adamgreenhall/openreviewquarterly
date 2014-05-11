@@ -78,6 +78,8 @@ GEM
     google-analytics-rails (0.0.5)
     haml (4.0.5)
       tilt
+    haml-contrib (1.0.0.1)
+      haml (>= 3.2.0.alpha.13)
     haml-rails (0.4)
       actionpack (>= 3.1, < 4.1)
       activesupport (>= 3.1, < 4.1)
@@ -217,6 +219,7 @@ DEPENDENCIES
   debugger
   devise
   google-analytics-rails
+  haml-contrib
   haml-rails
   jquery-datatables-rails
   jquery-rails
