@@ -6,7 +6,6 @@ gem 'newrelic_rpm'
 group :development, :test do
   # gem 'guard-livereload'
   # gem 'rack-livereload'
-  gem 'debugger'
   gem 'quiet_assets'
   gem 'taps'
 end
