@@ -8,4 +8,6 @@ Currently the site is built with:
 * [Heroku](http://heroku.com)
 * Lots of help from our friends.
 
+If you are getting started working on rails projects, checkout our [guide to getting started](https://github.com/adamgreenhall/openreviewquarterly/blob/master/development.md).
+
 New issues can be cleaned up from a google docs html downloads folder using ``cd newIssue; python cleanup.py`` 
