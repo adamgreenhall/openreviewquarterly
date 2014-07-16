@@ -3,9 +3,11 @@ This is a guide to getting the orq up and running for development on Mac OSX.
 # Software tools you will need
 
 * [Xcode command line tools](http://www.kennethreitz.org/essays/xcode-gcc-and-homebrew)
+* [Postgres](http://postgresapp.com/)
 * [git](http://git-scm.com/)
 * [rbenv](https://github.com/sstephenson/rbenv)
 * [heroku toolbelt](https://toolbelt.heroku.com/)
+
 
 
 ## The easy way to get these things
@@ -13,6 +15,9 @@ This is a guide to getting the orq up and running for development on Mac OSX.
 Command line tools are OSX version specific:
 * for Mountain Lion (or more recent), just open the terminal and type ``gcc``. If command line tools aren't installed, you will get a [prompt](http://railsapps.github.io/images/installing-mavericks-popup.png) asking if you want to install them. You do.
 * for Lion (or less recent), you'll have to go to [http://developer.apple.com/downloads](http://developer.apple.com/downloads), login, search for **Command Line Tools for Xcode**, download it, and run the installer. 
+
+### Postgres
+Go to [postgresapp.com](http://postgresapp.com/), download and install it. You will need the little elephant up in your status bar whenever you are working on the app.
 
 ### Everything else
 You can use the terminal to install everything else:
@@ -33,6 +38,7 @@ You can use the terminal to install everything else:
 	# install the orq gems
 	bundle
 	# you will need a postgres user named orq
+	# remember - you need the postgres app running
 	createuser orq -d -s -h localhost
 	# create database
 	rake db:create
