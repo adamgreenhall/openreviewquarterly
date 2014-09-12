@@ -14,7 +14,7 @@ This is a guide to getting the orq up and running for development on Mac OSX.
 ### OSX command line tools
 Command line tools are OSX version specific:
 * for Mountain Lion (or more recent), just open the terminal and type ``gcc``. If command line tools aren't installed, you will get a [prompt](http://railsapps.github.io/images/installing-mavericks-popup.png) asking if you want to install them. You do.
-* for Lion (or less recent), you'll have to go to [http://developer.apple.com/downloads](http://developer.apple.com/downloads), login, search for **Command Line Tools for Xcode**, download it, and run the installer. 
+* for Lion (or less recent), you'll have to go to [http://developer.apple.com/downloads](http://developer.apple.com/downloads), login, search for **Command Line Tools for Xcode**, download it, and run the installer.
 
 ### Postgres
 Go to [postgresapp.com](http://postgresapp.com/), download and install it. You will need the little elephant up in your status bar whenever you are working on the app.
@@ -23,7 +23,7 @@ Go to [postgresapp.com](http://postgresapp.com/), download and install it. You w
 You can use the terminal to install everything else:
 
 	# homebrew - helps to install other things
-	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)" 
+	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 	# git, rbenv
 	brew install git rbenv ruby-build
 	# heroku toolbelt
@@ -44,6 +44,6 @@ You can use the terminal to install everything else:
 	rake db:create
 	rake db:migrate
 	# get a fresh copy of the database
-	heroku pgbackups:capture # if this fails, it's ok, just keep going
+	heroku pgbackups:capture
 	curl -o latest.dump `heroku pgbackups:url`
 	pg_restore --verbose --clean --no-acl --no-owner -h localhost -U orq -d orq latest.dump
