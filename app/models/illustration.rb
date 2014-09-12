@@ -10,9 +10,11 @@ class Illustration < ActiveRecord::Base
     else
       self.url_external
     end
-  end 
+  end
   def nice_name
     (self.title.nil? || self.title=='') ? self.piece.title : self.title
   end
-  
+  def is_published
+    self.issue.is_published
+  end
 end

@@ -9,7 +9,7 @@ class AuthorsController < ApplicationController
       @author=Author.find(params[:id])
     end
     @pieces = @author.pieces.joins(:issue).where({:issues => {:is_published => true}}).sort_by{|p| p.issue.number}.reverse
-    
+
     @illustrations = @author.illustrations.joins(:issue).where({:issues => {:is_published => true}}).sort_by{|i| i.issue.number}.reverse
   end
 
@@ -40,24 +40,18 @@ class AuthorsController < ApplicationController
     end
   end
 
-  
+
   def destroy
     Author.find(params[:id]).delete
   end
-    
+
   def all
     # put the publishers on the top
-    @authors=Author.publishers
-    @authors.concat(
-      Author.select("last_name, first_name, image_url").find(:all, :conditions => ['id not in (?)', @authors.map(&:id)], :order=>'last_name')
-    )
+    @authors=Author.published_ordered
   end
-  
+
   def all_bios
-    @authors=Author.publishers
-    @authors.concat(
-      Author.select("last_name, first_name, biography").find(:all, :conditions => ['id not in (?)', @authors.map(&:id)], :order=>'last_name')
-    )
+    @authors=Author.published_ordered
   end
 
   private
@@ -68,7 +62,7 @@ class AuthorsController < ApplicationController
     else
       "application"
     end
-  end  
+  end
 
-  
+
 end

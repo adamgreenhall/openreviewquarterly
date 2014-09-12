@@ -2,7 +2,7 @@ class PiecesController < ApplicationController
   before_filter :authenticate_admin!, :only => [:new,:edit,:create,:destroy,:update,:all]
   layout :resolve_layout
   def show
-    if params[:issue_title] && params[:piece_title] 
+    if params[:issue_title] && params[:piece_title]
       @piece=get_piece_from_titles(params)
       raise ActionController::RoutingError.new('Piece not found') if @piece.nil?
     else
@@ -10,13 +10,11 @@ class PiecesController < ApplicationController
     end
     if !@piece.is_published && !admin_signed_in?
       redirect_to '/'
-    end    
+    end
   end
 
   def new
     @piece=Piece.new
-    @authors=Author.all
-    @issues=Issue.all
   end
 
   def edit
@@ -31,7 +29,7 @@ class PiecesController < ApplicationController
       render :acion=>'new'
     end
   end
-  
+
   def update
     @piece=Piece.find(params[:id])
     saved=@piece.update_attributes(params[:piece])
@@ -41,7 +39,7 @@ class PiecesController < ApplicationController
       redirect_to "/pieces/#{@piece.id}/edit"
     end
   end
-  
+
   def destroy
     Piece.find(params[:id]).delete
     respond_to do |format|
@@ -52,11 +50,11 @@ class PiecesController < ApplicationController
       end
     end
   end
-  
+
   def all
     @pieces=Piece.all
   end
-  
+
   private
   def resolve_layout
     case action_name
@@ -65,5 +63,5 @@ class PiecesController < ApplicationController
     else
       "application"
     end
-  end    
+  end
 end

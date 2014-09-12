@@ -9,4 +9,6 @@ class Issue < ActiveRecord::Base
   def url
     '/'+URLify.urlify(self.title,'-')
   end
+
+  # TODO - after published updated, update any authors in issue who are newly published
 end
