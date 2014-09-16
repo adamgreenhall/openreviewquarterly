@@ -4,12 +4,12 @@
   =f.input :first_name
   =f.input :last_name
   =f.input :image_url
-  =f.text_area :biography, :size => '80x20',:style=>'width: 60em'
+  =f.text_area :biography, :size => '80x10',:style=>'width: 80%'
   %br
   =f.button :submit
 
 %h2 Biography Preview
-#preview_area{:style=>'border: 1px solid black; width: 40em'}
+#preview_area{:style=>'border: 1px solid black; width: 80%'}
 
 :javascript
   function showPreview(){

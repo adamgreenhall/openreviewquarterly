@@ -24,7 +24,7 @@ class IssuesController < ApplicationController
   end
 
   def new
-    @issue=Issue.new(published: false)
+    @issue=Issue.new(is_published: false)
   end
 
   def edit
@@ -34,9 +34,10 @@ class IssuesController < ApplicationController
   end
 
   def create
-    saved=Issue.new(params[:issue]).save()
+    @issue = Issue.new(params[:issue].keep_if{|k, v| k != 'piece_order'})
+    saved = @issue.save()
     if saved
-      redirect_to '/issues/all'
+      redirect_to "/issues/#{@issue.id}/edit"
     else #form had errors
       redirect_to '/issues/new'
     end
@@ -46,7 +47,7 @@ class IssuesController < ApplicationController
     @issue=Issue.find(params[:id])
     piece_order=JSON.parse(params[:issue]['piece_order'])
     params[:issue].delete :piece_order
-    
+
     old_piece_order=@issue.pieces.order(:number).map{|p| p.id}
     if piece_order!=old_piece_order
       piece_order.each_with_index do |id,i|
@@ -55,7 +56,7 @@ class IssuesController < ApplicationController
     end
 
     saved=@issue.update_attributes(params[:issue])
-    
+
     if saved
       redirect_to "/issues/#{@issue.id}"
     else
@@ -63,11 +64,11 @@ class IssuesController < ApplicationController
     end
   end
 
-    
+
   def all
     @issues=Issue.order(:number).all()
-  end  
-  
+  end
+
   private
   def resolve_layout
     case action_name
@@ -76,5 +77,5 @@ class IssuesController < ApplicationController
     else
       "application"
     end
-  end    
+  end
 end

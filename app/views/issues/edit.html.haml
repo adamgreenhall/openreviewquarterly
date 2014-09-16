@@ -1,44 +1,44 @@
 -@title = "Edit Issue:: #{@issue.title}"
 -@bodyid='admin'
-%h1 Edit existing issue
 .row
   .span6
+    %h1 Edit issue
     =render :partial=>'form',:locals=>{:issue=>@issue,:action=>'update'}
   .span6
-    %h2 Piece order
-    %ul#piece_order
-      -@pieces.each_with_index do |piece,i|
-        %li.piece_order_elem.ui-state-default{:id=>piece.id} 
-          %span.number #{i+1}
-          %span.name : #{piece.title} - #{piece.author.name}
+    %h1 Pieces
+    %h2=link_to 'New piece','/pieces/new'
+    -if @pieces.length > 0
+      %h2 Edit pieces
+      %ul#piece_order
+        -@pieces.each_with_index do |piece,i|
+          %li.piece_order_elem.ui-state-default{:id=>piece.id}
+            %i.move.icon-align-justify
+            /.icon-reorder
+            %span.number #{i+1}
+            %span=link_to piece.nice_name,"/pieces/#{piece.id}/edit"
+            %span=piece.author.name
+            %span.delete_piece.pull-right{:piece_id=>piece.id,:style=>'padding-left: 5px', :kind=>'pieces'}
+              %i.icon-remove-circle
 
-%section
-  %h2=link_to 'New piece','/pieces/new'
-  %h2 Edit pieces
-  %table
-    -@pieces.each do |piece|
-      %tr{:class=>piece.id}
-        %td{:style=>'padding: 3px 10px'}=link_to piece.nice_name,"/pieces/#{piece.id}/edit"
-        %td=piece.author.name
-        %td.delete_piece{:piece_id=>piece.id,:style=>'padding-left: 5px', :kind=>'pieces'}=link_to '(x)','#'
+    %h2=link_to 'New illustration','/illustrations/new'
+    -if @illustrations.length > 0
+      %h2 Edit illustrations
+      %table
+        -@illustrations.each do |piece|
+          %tr{:class=>piece.id}
+            %td{:style=>'padding: 3px 10px'}=link_to piece.nice_name,"/illustrations/#{piece.id}/edit"
+            %td=piece.author.name
+            %td.delete_piece{:piece_id=>piece.id,:style=>'padding-left: 5px', :kind=>'illustrations'}=link_to '(x)','#'
 
-  %h2=link_to 'New illustration','/illustrations/new'
-  %h2 Edit illustrations
-  %table
-    -@illustrations.each do |piece|
-      %tr{:class=>piece.id}
-        %td{:style=>'padding: 3px 10px'}=link_to piece.nice_name,"/illustrations/#{piece.id}/edit"
-        %td=piece.author.name
-        %td.delete_piece{:piece_id=>piece.id,:style=>'padding-left: 5px', :kind=>'illustrations'}=link_to '(x)','#'
 
 :javascript
   $(document).ready(function(){
-    
+
     $(".delete_piece").click(function(){
       var check = confirm('You do want to delete this piece?');
       if (check){
         var id = piece_id=$(this).attr('piece_id');
-        
+
         $.ajax({
           url: "/"+$(this).attr('kind')+"/"+String(id),
           type: 'DELETE',
@@ -46,7 +46,7 @@
             console.log('deleted piece',id);
             $('tr.'+String(id)).remove();
             $('li#'+String(id)).remove();
-            
+
           },
           headers: {
             'X-CSRF-Token': "#{form_authenticity_token.to_s}"
@@ -54,16 +54,16 @@
         });
       }
     });
-    
-    $( "#piece_order" ).sortable({ 
+
+    $( "#piece_order" ).sortable({
       placeholder: "ui-state-highlight",
       update: function(event,ui){
-        var order = $('#piece_order').sortable('toArray'); 
+        var order = $('#piece_order').sortable('toArray');
         // udpate the numbering ui
         $('li.piece_order_elem').each(function(i){ $('.number',this).text(i+1); });
         // update the numbering in the form
         $('input#issue_piece_order').val(JSON.stringify(order));
-        
+
       },
     });
     $( "#piece_order" ).disableSelection();

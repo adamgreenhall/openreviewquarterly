@@ -10,20 +10,20 @@
   =f.label :description
   =f.input_field :description
   =f.label :prompt
-  =f.text_area :prompt, :size => '80x10',:style=>'width: 40em'
-  
+  =f.text_area :prompt, :size => '80x10',:style=>'width: 90%'
+
   -if issue.pieces
     =f.hidden_field :piece_order, :value => issue.pieces.map{|p| p.id}.to_json
-  
-  = f.input :is_published, 
-          :as => :radio_buttons, 
+
+  = f.input :is_published,
+          :as => :radio_buttons,
           :item_wrapper_class => 'inline',
           :label_method => :last,
           :checked => issue.is_published
   =f.button :submit
-  
+
 %h2 Prompt Preview
-#preview_area{:style=>'border: 1px solid black; width: 600px'}
+#preview_area{:style=>'border: 1px solid black; width: 90%'}
 
 :javascript
   function showPreview(){
@@ -32,4 +32,4 @@
   $( function() {
       $( "#issue_prompt" ).keyup(function(){showPreview();});
       showPreview();
-  } );  
+  } );
