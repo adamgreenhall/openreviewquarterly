@@ -6,8 +6,8 @@
 %html.home{:lang => "en"}
   %head
     %title=@title
-    =stylesheet_link_tag 'application.css'    
-    =javascript_include_tag 'application.js'    
+    =stylesheet_link_tag 'application.css'
+    =javascript_include_tag 'application.js'
     =analytics_init if Rails.env.production?
     %meta{:content => "#{@description}", :name => "description"}/
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
@@ -22,11 +22,9 @@
             %li=link_to 'about',"/about"
             %li=link_to 'blog',"http://orq.tumblr.com/"
             %li=link_to 'people','/people'
-            %li=link_to 'submit','/submit'
   .container
     =yield
     .row
       .pagefooter.span6.offset3
         .publishingteam
           %p a collaborative project from #{link_to 'Michael Ahillen','http://michaelahillen.com'}, #{link_to 'Amelia Greenhall','http://ameliagreenhall.com'} & #{link_to 'Adam Greenhall','http://adamgreenhall.com'}
-      

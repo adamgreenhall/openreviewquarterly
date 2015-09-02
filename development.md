@@ -44,6 +44,6 @@ You can use the terminal to install everything else:
 	rake db:create
 	rake db:migrate
 	# get a fresh copy of the database
-	heroku pgbackups:capture
-	curl -o latest.dump `heroku pgbackups:url`
+	heroku pg:backups capture --app orq
+	curl -o latest.dump `heroku pg:backups public-url --app orq`
 	pg_restore --verbose --clean --no-acl --no-owner -h localhost -U orq -d orq latest.dump
